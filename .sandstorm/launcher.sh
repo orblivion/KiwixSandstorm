@@ -29,4 +29,16 @@ set -euo pipefail
 # By default, this script does nothing.  You'll have to modify it as
 # appropriate for your application.
 cd /opt/app
+
+kiwix/bin/kiwix-serve --port=8080 /var/icd10_fr_all_2012-01.zim &
+
+until wget -qO- localhost:10000 &> /dev/null;
+do
+  echo "Waiting for kiwix to start";
+  sleep .2;
+done
+
+# Start nginx.
+/usr/sbin/nginx -c /opt/app/.sandstorm/service-config/nginx.conf -g "daemon off;"
+
 exit 0
