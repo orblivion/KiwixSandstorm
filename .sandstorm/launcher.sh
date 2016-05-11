@@ -32,7 +32,7 @@ cd /opt/app
 
 kiwix/bin/kiwix-serve --port=8080 /var/icd10_fr_all_2012-01.zim &
 
-until wget -qO- localhost:10000 &> /dev/null;
+until wget -qO- localhost:8080 &> /dev/null;
 do
   echo "Waiting for kiwix to start";
   sleep .2;
