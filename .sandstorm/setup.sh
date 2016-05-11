@@ -35,7 +35,7 @@ fi
 echo "Extracting kiwix"
 tar xjf kiwix-linux-x86_64.tar.bz2
 
-cd /var
+cd /opt/app/sample_zim/
 
 if [ ! -f icd10_fr_all_2012-01.zim ]; then
     echo "Downloading sample zim file"
