@@ -30,9 +30,9 @@ set -euo pipefail
 # appropriate for your application.
 cd /opt/app
 
-kiwix/bin/kiwix-serve --port=8080 /opt/app/sample_zim/icd10_fr_all_2012-01.zim &
+kiwix/bin/kiwix-serve --port=8000 /opt/app/sample_zim/icd10_fr_all_2012-01.zim &
 
-until wget -qO- localhost:8080 &> /dev/null;
+until wget -qO- 127.0.0.1:8000 &> /dev/null;
 do
   echo "Waiting for kiwix to start";
   sleep .2;
