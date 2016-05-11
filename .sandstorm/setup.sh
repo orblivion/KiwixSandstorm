@@ -44,4 +44,6 @@ else
     echo "Already have sample zim file"
 fi
 
+sudo apt-get install -y nginx
+
 exit 0

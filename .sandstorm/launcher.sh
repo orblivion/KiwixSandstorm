@@ -30,4 +30,20 @@ set -euo pipefail
 # appropriate for your application.
 cd /opt/app
 
-kiwix/bin/kiwix-serve --port=8000 /opt/app/sample_zim/icd10_fr_all_2012-01.zim
+# Start Kiwix in the background
+kiwix/bin/kiwix-serve --port=8080 /opt/app/sample_zim/icd10_fr_all_2012-01.zim &
+
+# Some stuff nginx needs
+mkdir -p /var/run
+mkdir -p /var/log/nginx
+mkdir -p /var/lib/nginx
+
+# Wait for kiwix to start before sending to nginx
+until wget -qO- 127.0.0.1:8080 &> /dev/null;
+do
+  echo "Waiting for kiwix to start";
+  sleep .2;
+done
+
+# Start nginx.
+/usr/sbin/nginx -c /opt/app/.sandstorm/service-config/nginx.conf -g "daemon off;"
