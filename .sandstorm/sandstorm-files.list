@@ -40,6 +40,7 @@ lib/x86_64-linux-gnu/libz.so.1.2.8
 lib64/ld-linux-x86-64.so.2
 opt/app/.sandstorm/launcher.sh
 opt/app/kiwix/bin/kiwix-serve
+opt/app/sample_zim/icd10_fr_all_2012-01.zim
 proc/cpuinfo
 sandstorm-http-bridge
 sandstorm-manifest
