@@ -1,6 +1,6 @@
 import sys
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 
 app = Flask(__name__)
 if 'debug' in sys.argv:
@@ -9,7 +9,7 @@ if 'debug' in sys.argv:
 @app.route("/", methods=["GET", "POST"])
 def hello():
     if request.method == 'GET':
-        return open('static/form.html').read()
+        return render_template('form.html')
     else:
         raise NotImplementedError
 
