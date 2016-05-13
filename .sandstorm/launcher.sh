@@ -30,31 +30,36 @@ set -euo pipefail
 # appropriate for your application.
 cd /opt/app
 
-# Start Kiwix in the background
-kiwix/bin/kiwix-serve --port=8080 /opt/app/sample_zim/icd10_fr_all_2012-01.zim &
-
-if [ ! -d /var/my.zim ] ; then
+if [ ! -f /var/kiwix.zim ] ; then
   # Start the Zim file uploader if there's no Zim file
   HOME=/var /opt/app/zim_uploader/env/bin/python /opt/app/zim_uploader/app.py /var &
+
+  # Start a script that waits for the zim file to exist, and then starts kiwix.
+  # This one is suboptimal, because it will not be ready instantly after the
+  # zim file is available. That's why on restarts of the grain, it will skip
+  # this and immediately run kiwix, and wait before starting nginx.
+  /opt/app/kiwix_delayed.sh &
+
+  until wget -qO- 127.0.0.1:5000 &> /dev/null;
+  do
+    echo "Waiting for zim uploader to start";
+    sleep .2;
+  done
+else
+  kiwix/bin/kiwix-serve --port=8080 /var/kiwix.zim &
+
+  # Wait for kiwix to start before sending to nginx
+  until wget -qO- 127.0.0.1:8080 &> /dev/null;
+  do
+    echo "Waiting for kiwix to start";
+    sleep .2;
+  done
 fi
 
 # Some stuff nginx needs
 mkdir -p /var/run
 mkdir -p /var/log/nginx
 mkdir -p /var/lib/nginx
-
-# Wait for kiwix to start before sending to nginx
-until wget -qO- 127.0.0.1:8080 &> /dev/null;
-do
-  echo "Waiting for kiwix to start";
-  sleep .2;
-done
-
-until wget -qO- 127.0.0.1:5000 &> /dev/null;
-do
-  echo "Waiting for zim uploader to start";
-  sleep .2;
-done
 
 # Start nginx.
 /usr/sbin/nginx -c /opt/app/.sandstorm/service-config/nginx.conf -g "daemon off;"

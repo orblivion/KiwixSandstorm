@@ -27,7 +27,7 @@ def hello():
         elif f.mimetype != 'application/x-zim-notebook':
             # I'm surprise this exists!
             return render_template('form.html', bad_file_type=True)
-        f.save(os.path.join(args.upload_path, 'my.zim'))
+        f.save(os.path.join(args.upload_path, 'kiwix.zim'))
         return render_template('form.html', success=True)
 
 if __name__ == "__main__":
