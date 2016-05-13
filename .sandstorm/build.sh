@@ -17,7 +17,18 @@ set -euo pipefail
 #   * Collecting various build artifacts or assets into a deployment-ready
 #     directory structure
 
-# By default, this script does nothing.  You'll have to modify it as
-# appropriate for your application.
-cd /opt/app
+sudo apt-get install python-virtualenv
+
+#!/bin/bash
+set -euo pipefail
+ZIM_UPLOADER=/opt/app/zim_uploader
+VENV=$ZIM_UPLOADER/env
+if [ ! -d $VENV ] ; then
+    virtualenv $VENV
+else
+    echo "$VENV exists, moving on"
+fi
+
+$VENV/bin/pip install -r $ZIM_UPLOADER/requirements.txt
+
 exit 0

@@ -33,6 +33,11 @@ cd /opt/app
 # Start Kiwix in the background
 kiwix/bin/kiwix-serve --port=8080 /opt/app/sample_zim/icd10_fr_all_2012-01.zim &
 
+if [ ! -d /var/my.zim ] ; then
+  # Start the Zim file uploader if there's no Zim file
+  HOME=/var /opt/app/zim_uploader/env/bin/python /opt/app/zim_uploader/app.py /var &
+fi
+
 # Some stuff nginx needs
 mkdir -p /var/run
 mkdir -p /var/log/nginx
@@ -42,6 +47,12 @@ mkdir -p /var/lib/nginx
 until wget -qO- 127.0.0.1:8080 &> /dev/null;
 do
   echo "Waiting for kiwix to start";
+  sleep .2;
+done
+
+until wget -qO- 127.0.0.1:5000 &> /dev/null;
+do
+  echo "Waiting for zim uploader to start";
   sleep .2;
 done
 
