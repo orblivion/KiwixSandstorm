@@ -25,8 +25,13 @@ def hello():
         if not f.filename:
             return render_template('form.html', unspecified=True)
         elif f.mimetype != 'application/x-zim-notebook':
-            # I'm surprise this exists!
-            return render_template('form.html', bad_file_type=True)
+            # I'm surprised this exists! I suspect it requires having
+            # `zim` installed.
+            return render_template(
+                'form.html',
+                bad_file_type=True,
+                mimetype=f.mimetype,
+            )
         f.save(os.path.join(args.upload_path, 'kiwix.zim'))
         return render_template('form.html', success=True)
 

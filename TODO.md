@@ -11,6 +11,8 @@
 * Fairly small file size limit, as a holdover.
 ** Too small for Wikipedia for now. Streaming such a large upload is an absolute must for the final version, but it will take some work so we'll skip it for BETA.
 
+* Possible apt install zim; when running locally (not in Sandstorm VM), it seemed to be required to recognize the zim MIME type
+
 # To complete before out of BETA:
 
 ## For the main script:
