@@ -93,7 +93,6 @@ opt/app/.sandstorm/service-config/mime.types
 opt/app/.sandstorm/service-config/nginx.conf
 opt/app/kiwix/bin/kiwix-serve
 opt/app/kiwix_delayed.sh
-opt/app/sample_zim/icd10_fr_all_2012-01.zim
 opt/app/zim_uploader/app.py
 opt/app/zim_uploader/env/bin/python
 opt/app/zim_uploader/env/bin/python2

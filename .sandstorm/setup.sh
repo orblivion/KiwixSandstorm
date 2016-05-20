@@ -35,15 +35,7 @@ fi
 echo "Extracting kiwix"
 tar xjf kiwix-linux-x86_64.tar.bz2
 
-cd /opt/app/sample_zim/
-
-if [ ! -f icd10_fr_all_2012-01.zim ]; then
-    echo "Downloading sample zim file"
-    wget -q "http://download.kiwix.org/zim/other/icd10_fr_all_2012-01.zim"
-else
-    echo "Already have sample zim file"
-fi
-
+echo "Installing nginx"
 sudo apt-get install -y nginx
 
 exit 0

@@ -2,8 +2,6 @@
 
 ## For the main script:
 
-* Delete `sample_zim`
-
 * Add a `LICENSE` file
 
 * Move files into better dirs (`scripts/` or `.sandstorm/` for `kiwix\_delayed.sh` file)
