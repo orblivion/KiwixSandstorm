@@ -4,6 +4,8 @@
 
 * Update the package definition file with better details
 
+* Run once to capture files list
+
 * Create/publish the package
 
 # To complete before out of BETA:
@@ -38,3 +40,5 @@
 
 * Simplify nginx - just distinguish between `zim\_uploader` and `kiwix` by URL path; no need to check for file existence.
 ** On the other hand, we could have the kiwix launcher script start kiwix, wait and confirm that it's running, then write a "kiwix\_ready" file that nginx reads. That way kiwix always ready by the time nginx proxies to it.
+
+* Sign my code
