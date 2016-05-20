@@ -6,10 +6,6 @@
 
 * Create/publish the package
 
-## For the Uploader
-
-* Possible apt install zim; when running locally (not in Sandstorm VM), it seemed to be required to recognize the zim MIME type
-
 # To complete before out of BETA:
 
 ## For the main script:
@@ -18,6 +14,8 @@
 ** Until such point that everything is from source or official Debian packages, this package is not legit.
 
 ## For the Uploader
+
+* Validate zim file format.
 
 * Allow for huge files (Wikipedia)
 ** Still have a file size limit to prevent DOSing or something. Though, Sandstorm may have system-wide stuff for that.

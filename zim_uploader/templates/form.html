@@ -9,8 +9,6 @@
         </p>
         {% if unspecified %}
             You did not specify a file. Please try again.
-        {% elif bad_file_type %}
-            Sorry, this does not appear to be a zim file. (The MIME type was "{{mimetype}}") Please try another.
         {% endif %}
         <form method="post" enctype="multipart/form-data">
             <input type="file" name="file_to_upload" id="file_to_upload">
