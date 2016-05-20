@@ -10,9 +10,6 @@
 
 ## For the Uploader
 
-* Fairly small file size limit, as a holdover.
-** Too small for Wikipedia for now. Streaming such a large upload is an absolute must for the final version, but it will take some work so we'll skip it for BETA.
-
 * Possible apt install zim; when running locally (not in Sandstorm VM), it seemed to be required to recognize the zim MIME type
 
 # To complete before out of BETA:
@@ -26,6 +23,7 @@
 
 * Allow for huge files (Wikipedia)
 ** Still have a file size limit to prevent DOSing or something. Though, Sandstorm may have system-wide stuff for that.
+** Actually, look into nginx handling file uploads itself.
 
 * Link to [Zim downloads](http://www.kiwix.org/wiki/Content_in_all_languages) on Kiwix's site
 

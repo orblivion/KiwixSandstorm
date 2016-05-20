@@ -2,6 +2,11 @@
   <body>
     {% if not success %}
         <h1>This Kiwix instance has no data. Upload a zim file</h1>
+        <p>
+            NOTE: For the time being there is a limit of 10MB on uploads. The
+            server code needs to be improved to handle larger ones. Eventually,
+            hopefully it will be able to handle something as big as Wikipedia.
+        </p>
         {% if unspecified %}
             You did not specify a file. Please try again.
         {% elif bad_file_type %}
