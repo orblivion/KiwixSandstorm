@@ -2,8 +2,6 @@
 
 ## For the main script:
 
-* Move files into better dirs (`scripts/` or `.sandstorm/` for `kiwix\_delayed.sh` file)
-
 * Update the package definition file with better details
 
 * Create/publish the package

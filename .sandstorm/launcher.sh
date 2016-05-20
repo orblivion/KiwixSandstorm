@@ -38,7 +38,7 @@ if [ ! -f /var/kiwix.zim ] ; then
   # This one is suboptimal, because it will not be ready instantly after the
   # zim file is available. That's why on restarts of the grain, it will skip
   # this and immediately run kiwix, and wait before starting nginx.
-  /opt/app/kiwix_delayed.sh &
+  /opt/app/scripts/kiwix_delayed.sh &
 
   until wget -qO- 127.0.0.1:5000 &> /dev/null;
   do
