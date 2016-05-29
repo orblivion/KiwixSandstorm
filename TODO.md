@@ -28,7 +28,7 @@
 * Send user to zim file directly, skip library view
 ** We'd need to hide the library link in the main view as well.
 
-* bootstrap css
+* bootstrap css, (or spectre.css? seems smaller/simpler)
 
 # Other TODOs
 
