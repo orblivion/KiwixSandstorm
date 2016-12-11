@@ -6,6 +6,10 @@
 
 * Run once to capture files list
 
+* License - do I need to put Kiwix's license, or my package's license? I probably have to match its license anyway.
+
+* Make sure latest version is on Github.
+
 * Create/publish the package
 
 # To complete before out of BETA:
@@ -42,3 +46,5 @@
 ** On the other hand, we could have the kiwix launcher script start kiwix, wait and confirm that it's running, then write a "kiwix\_ready" file that nginx reads. That way kiwix always ready by the time nginx proxies to it.
 
 * Sign my code
+
+* Add icons (accounting for Kiwix's policy on app resources)
