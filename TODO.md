@@ -2,8 +2,6 @@
 
 ## For the main script:
 
-* Run once to capture files list
-
 * Make sure latest version is on Github.
 
 * Create/publish the package
