@@ -1,4 +1,4 @@
-@0xf15cf4b76d10176f;
+@0x938a4b7c91ffc67d;
 
 using Spk = import "/sandstorm/package.capnp";
 # This imports:
@@ -9,7 +9,7 @@ const pkgdef :Spk.PackageDefinition = (
   # The package definition. Note that the spk tool looks specifically for the
   # "pkgdef" constant.
 
-  id = "r01gyeh5z1pf2y7mqp6qyfaq8c3z9gsp99h2c0svju13t2rjcrn0",
+  id = "5uh349d0kky2zp5whrh2znahn27gwha876xze3864n0fu9e5220h",
   # Your app ID is actually its public key. The private key was placed in
   # your keyring. All updates must be signed with the same key.
 
