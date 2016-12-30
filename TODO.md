@@ -4,8 +4,6 @@
 
 * Run once to capture files list
 
-* License - do I need to put Kiwix's license, or my package's license? I probably have to match its license anyway.
-
 * Make sure latest version is on Github.
 
 * Create/publish the package
