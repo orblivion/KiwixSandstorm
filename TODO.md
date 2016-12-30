@@ -1,4 +1,4 @@
-# To complete before BETA release:
+# To complete before ALPHA release:
 
 ## For the main script:
 
@@ -10,7 +10,7 @@
 
 * Create/publish the package
 
-# To complete before out of BETA:
+# To complete before out of ALPHA:
 
 ## For the main script:
 
@@ -34,7 +34,7 @@
 
 # Other TODOs
 
-* Show demo to creators of Kiwix! (Will probably show them BETA)
+* Show demo to creators of Kiwix! (Will probably show them ALPHA)
 
 * When creating the file in the uploader, wait for kiwix to start before directing the user there.
   * As it is, before the file is there, Kiwix is on a loop waiting for it.
@@ -44,5 +44,7 @@
   * On the other hand, we could have the kiwix launcher script start kiwix, wait and confirm that it's running, then write a "kiwix\_ready" file that nginx reads. That way kiwix always ready by the time nginx proxies to it.
 
 * Sign my code
+
+* Fill in more details in package definition (PGP sig, etc)
 
 * Add icons (accounting for Kiwix's policy on app resources)
