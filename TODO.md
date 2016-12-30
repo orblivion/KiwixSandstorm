@@ -16,6 +16,8 @@
 
 * Build from `kiwix-serve` source, or use `kiwix-serve` Debian package when it's added
   * Until such point that everything is from source or official Debian packages, this package is not legit.
+  * Build kiwix-tools; that has kiwix-serve in it
+  * Eventually just use the kiwix-tools Debian package once it's available
 
 ## For the Uploader
 
