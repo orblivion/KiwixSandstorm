@@ -2,9 +2,7 @@
 
 ## For the main script:
 
-* Make sure latest version is on Github.
-
-* Create/publish the package
+* Publish the package somewhere
 
 # To complete before out of ALPHA:
 
