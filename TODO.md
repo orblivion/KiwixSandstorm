@@ -2,7 +2,7 @@
 
 ## For the main script:
 
-* Publish the package somewhere
+* Publish the package, albeit with an ALPHA warning
 
 # To complete before out of ALPHA:
 
