@@ -28,6 +28,8 @@
 
 * bootstrap css, (or spectre.css? seems smaller/simpler)
 
+* Alternately, scrap my hacky uploader and just connect to a FileDrop grain when that's possible.
+
 # Other TODOs
 
 * Show demo to creators of Kiwix! (Will probably show them ALPHA)
