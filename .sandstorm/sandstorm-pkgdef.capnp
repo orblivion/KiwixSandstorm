@@ -49,10 +49,13 @@ const pkgdef :Spk.PackageDefinition = (
       # https://github.com/sandstorm-io/sandstorm/blob/master/src/sandstorm/package.capnp
       icons = (
         # Various icons to represent the app in various contexts.
-        #appGrid = (svg = embed "path/to/appgrid-128x128.svg"),
-        #grain = (svg = embed "path/to/grain-24x24.svg"),
-        #market = (svg = embed "path/to/market-150x150.svg"),
-        #marketBig = (svg = embed "path/to/market-big-300x300.svg"),
+        # Images are GPL-3.0, derived from:
+        # https://raw.githubusercontent.com/kiwix/kiwix/master/kiwix/chrome/icons/default/main.png
+        appGrid = (png = (dpi1x = embed "kiwix-icons/appgrid-128x128.png")),
+        grain = (png = (dpi1x = embed "kiwix-icons/grain-24x24.png",
+                        dpi2x = embed "kiwix-icons/grain-48x48.png")),
+        market = (png = (dpi1x = embed "kiwix-icons/market-150x150.png")),
+        marketBig = (png = (dpi1x = embed "kiwix-icons/market-big-300x300.png")),
       ),
 
       website = "https://github.com/orblivion/KiwixSandstorm",

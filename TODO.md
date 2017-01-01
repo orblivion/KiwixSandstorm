@@ -42,5 +42,3 @@
 * Sign my code
 
 * Fill in more details in package definition (PGP sig, etc)
-
-* Add icons (accounting for Kiwix's policy on app resources)
