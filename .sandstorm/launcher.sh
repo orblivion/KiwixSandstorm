@@ -46,7 +46,9 @@ if [ ! -f /var/kiwix.zim ] ; then
     sleep .2;
   done
 else
-  kiwix/bin/kiwix-serve --port=8080 /var/kiwix.zim &
+  # libkiwix.so
+  export LD_LIBRARY_PATH=/usr/local/lib/x86_64-linux-gnu/:openzim/zimlib/src/.libs/:xapian/xapian-core/.libs/:pugixml/
+  kiwix-serve --port=8080 /var/kiwix.zim &
 
   # Wait for kiwix to start before sending to nginx
   until wget -qO- 127.0.0.1:8080 &> /dev/null;
@@ -56,7 +58,7 @@ else
   done
 fi
 
-# Some stuff nginx needs
+# Some stuff nginx needs. Apparently it doesn't persist after build?
 mkdir -p /var/run
 mkdir -p /var/log/nginx
 mkdir -p /var/lib/nginx

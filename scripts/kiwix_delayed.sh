@@ -10,4 +10,6 @@ done
 
 echo "We see /var/kiwix.zim. Starting kiwix.";
 
-kiwix/bin/kiwix-serve --port=8080 /var/kiwix.zim
+export LD_LIBRARY_PATH=/usr/local/lib/x86_64-linux-gnu/:openzim/zimlib/src/.libs/:xapian/xapian-core/.libs/:pugixml/
+
+kiwix-serve --port=8080 /var/kiwix.zim

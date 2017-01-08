@@ -1,3 +1,8 @@
-/kiwix/
-/kiwix-linux-x86_64.tar.bz2
 /zim_uploader/local_env
+/env3
+/openzim
+/pugixml
+/xapian
+/ninja
+/kiwix-lib
+/kiwix-tools
