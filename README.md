@@ -3,5 +3,3 @@ This is a work in progress (ALPHA) package of [Kiwix](http://www.kiwix.org) for 
 Relatedly, I acknowledge that the build process is currently not secure. Firstly, it downloads the binary of Kiwix over http, because even if you put "https" it just redirects to an http mirror anyway. (I fear far more sites do this than we like to think). So I don't bother. I do check sha256sum, but it's based on a binary I downloaded myself from a couple different wifi hotspots to have a little assurance that it's the same file. But please, take care until I figure this out.
 
 See `TODO.md` file to get an idea of the current status of this packaging project.
-
-Licensed as MIT (see `LICENSE` file) to keep copyright law out of it, but I'd appreciate if this were treated in the spirit of the GPL.
