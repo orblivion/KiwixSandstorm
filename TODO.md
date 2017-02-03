@@ -3,15 +3,9 @@
 ## For the main script:
 
 * Publish the package, albeit with an ALPHA warning
+  * https://docs.sandstorm.io/en/latest/developing/publishing-apps/
 
 # To complete before out of ALPHA:
-
-## For the main script:
-
-* Build from `kiwix-serve` source, or use `kiwix-serve` Debian package when it's added
-  * Until such point that everything is from source or official Debian packages, this package is not legit.
-  * Build kiwix-tools; that has kiwix-serve in it
-  * Eventually just use the kiwix-tools Debian package once it's available
 
 ## For the Uploader
 
@@ -31,6 +25,8 @@
 * Alternately, scrap my hacky uploader and just connect to a FileDrop grain when that's possible.
 
 # Other TODOs
+
+* Eventually just use the kiwix-tools Debian package once it's available
 
 * Show demo to creators of Kiwix! (Will probably show them ALPHA)
 
