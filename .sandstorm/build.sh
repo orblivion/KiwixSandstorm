@@ -20,13 +20,7 @@ set -euo pipefail
 #!/bin/bash
 
 set -euo pipefail
-ZIM_UPLOADER=/opt/app/zim_uploader
-VENV2=$ZIM_UPLOADER/env
-if [ ! -d $VENV2 ] ; then
-    virtualenv $VENV2
-else
-    echo "$VENV2 exists, moving on"
-fi
+
 VENV3=/opt/app/env3
 if [ ! -d $VENV3 ] ; then
     virtualenv -p python3 $VENV3
@@ -34,7 +28,6 @@ else
     echo "$VENV3 exists, moving on"
 fi
 
-$VENV2/bin/pip install -r $ZIM_UPLOADER/requirements.txt
 # TODO requirements.txt
 $VENV3/bin/pip3 install scikit-build==0.5.1
 $VENV3/bin/pip3 install meson==0.37.1
@@ -79,6 +72,20 @@ if [ ! -f $KIWIXSERVEFILE ]; then
     echo "Built kiwix-tools"
 else
     echo "Already built kiwix-tools"
+fi
+
+ZIM_UPLOADER=/opt/app/zim_uploader
+
+# Set up uploader
+FLASKFILEUPLOADERFILE=$ZIM_UPLOADER/uploader/env/lib/python2.7/site-packages/simplejson
+if [ ! -f $FLASKFILEUPLOADERFILE ]; then
+    echo "Installing dependencies for uploader"
+    cd $ZIM_UPLOADER
+    virtualenv env
+    env/bin/pip install -r uploader/requirements.txt
+    echo "Installed dependencies for uploader"
+else
+    echo "Already installed dependencies for uploader"
 fi
 
 exit 0

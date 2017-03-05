@@ -53,6 +53,9 @@ apt-get install -y aria2 libctpp2-dev
 echo "Installing other kiwix-tools requirements"
 apt-get install -y libmicrohttpd-dev
 
+echo "Installing uploader requirements"
+apt-get install -y python-dev
+
 # Build libzim - we need a version with pkg-config stuff
 LIBZIMFILE=/usr/local/lib/libzim.la
 if [ ! -f $LIBZIMFILE ]; then
