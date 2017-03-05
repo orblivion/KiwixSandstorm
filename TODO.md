@@ -40,3 +40,12 @@
 * Sign my code
 
 * Fill in more details in package definition (PGP sig, etc)
+
+* read-only permissions for sharing
+
+* Confirm about aria2c - It's not used during build, right? Only running (for fetching Zim files in the library manager)?
+  * I think it's only for the Desktop, though, since the web interface doesn't have a library manager (that's why this Sandstorm app adds its own uploader).
+
+* flask-file-uploader/jquery-file-uploader
+  * Enable max chunk size, and read Content-Range header
+  * Requires Sandstorm to add Content-Range header
