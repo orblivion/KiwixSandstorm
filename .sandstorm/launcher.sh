@@ -29,15 +29,11 @@ if [ ! -f /var/kiwix.zim ] ; then
   done
 else
   # libkiwix.so
-  export LD_LIBRARY_PATH=/usr/local/lib/x86_64-linux-gnu/:openzim/zimlib/src/.libs/:xapian/xapian-core/.libs/:pugixml/
+  export LD_LIBRARY_PATH=/usr/local/lib/x86_64-linux-gnu/:/opt/app/openzim/zimlib/src/.libs/:/opt/app/xapian/xapian-core/.libs/:/opt/app/pugixml/
   kiwix-serve --port=8080 /var/kiwix.zim &
 
-  # Wait for kiwix to start before sending to nginx
-  until wget -qO- 127.0.0.1:8080 &> /dev/null;
-  do
-    echo "Waiting for kiwix to start";
-    sleep .2;
-  done
+  # Hopefully enough time to make sure kiwix-serve started, since we don't have the benefit of a sock file.
+  sleep .2;
 fi
 
 # Start nginx.
