@@ -5,8 +5,9 @@ import sys
 from flask import Flask, request, render_template
 
 parser = argparse.ArgumentParser(description='Serve Zim file uploader.')
-parser.add_argument('upload_path', type=str,
-                    help='Where the zim file should go')
+parser.add_argument('--upload-path', dest='upload_path',
+                    help='Where the zim file should go',
+                    default='/var')
 parser.add_argument('-d', dest='debug', action='store_true',
                     help='Run this flask app in debug mode')
 
@@ -27,5 +28,4 @@ def hello():
         f.save(os.path.join(args.upload_path, 'kiwix.zim'))
         return render_template('form.html', success=True)
 
-if __name__ == "__main__":
-    app.run()
+application = app.wsgi_app

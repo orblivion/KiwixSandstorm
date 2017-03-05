@@ -39,7 +39,7 @@ echo "Installing build tools"
 apt-get install -y git build-essential libtool autoconf pkg-config cmake libicu-dev libctpp2-dev
 
 echo "Installing python stuff"
-apt-get install -y python-virtualenv python3
+apt-get install -y python-virtualenv python3 uwsgi uwsgi-plugin-python
 
 echo "Installing libzim requirements"
 apt-get install -y git liblzma-dev libicu-dev
@@ -163,5 +163,8 @@ if [ ! -f $NINJAFILE ]; then
 else
     echo "Already built ninja"
 fi
+
+service nginx stop
+systemctl disable nginx
 
 exit 0
