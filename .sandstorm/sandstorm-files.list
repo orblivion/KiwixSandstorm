@@ -245,6 +245,7 @@ opt/app/zim_uploader/uploader/static/js/main.js
 opt/app/zim_uploader/uploader/static/js/tmpl.js
 opt/app/zim_uploader/uploader/static/js/vendor/jquery.ui.widget.js
 opt/app/zim_uploader/uploader/templates/index.html
+proc/cpuinfo
 sandstorm-http-bridge
 sandstorm-http-bridge-config
 sandstorm-manifest
