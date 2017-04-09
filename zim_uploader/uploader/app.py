@@ -122,6 +122,9 @@ def _upload():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    return render_template(
+        'index.html',
+        zim_file_exists=os.path.exists(COMPLETED_FILE_PATH),
+    )
 
 application = app.wsgi_app

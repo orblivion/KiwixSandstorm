@@ -23,12 +23,13 @@ $(function () {
             formData.push({name: 'contentRange', value: options.contentRange})
             return formData
         },
-    })
+    });
 
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
+        autoUpload: true,
         url: 'upload',
         maxChunkSize: 5 * 1024 * 1024,
         formData: function (form) {
@@ -36,33 +37,29 @@ $(function () {
         }
     });
 
-    // Enable iframe cross-domain access via redirect option:
-    $('#fileupload').fileupload(
-        'option',
-        'redirect',
-        window.location.href.replace(
-            /\/[^\/]*$/,
-            '/cors/result.html?%s'
-        )
-    );
+    var kiwixCheck = function() {
+        $.ajax({method: 'GET', url: '/kiwix/'})
+          .fail(function() {
+            console.log("not yet")
+            setTimeout(kiwixCheck, 100)
+          })
+          .done(function() {
+            console.log("okay done")
+            if ($('#kiwix-do-redirect').length) {
+              window.location = '/kiwix/';
+            } else {
+              $('#kiwix-link').removeClass('hidden')
+              $('#kiwix-waiting').addClass('hidden')
+              $('#fileupload').addClass('hidden')
+            }
+          })
+    }
 
-    $('#fileupload').fileupload(
-        'option', 'autoUpload', true
-    );
-
-    // Load existing files:
-    $('#fileupload').addClass('fileupload-processing');
-    $.ajax({
-        // Uncomment the following to send cross-domain cookies:
-        //xhrFields: {withCredentials: true},
-        url: $('#fileupload').fileupload('option', 'url'),
-        dataType: 'json',
-        context: $('#fileupload')[0]
-    }).always(function () {
-        $(this).removeClass('fileupload-processing');
-    }).done(function (result) {
-        $(this).fileupload('option', 'done')
-            .call(this, $.Event('done'), {result: result});
-    });
-
+    $('#fileupload').bind('fileuploaddone', function (e, data) {
+      $('#kiwix-waiting').removeClass('hidden')
+      setTimeout(kiwixCheck, 1)
+    })
+    if ($('#kiwix-do-redirect').length) {
+      setTimeout(kiwixCheck, 1)
+    }
 });

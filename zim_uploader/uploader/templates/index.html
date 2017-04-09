@@ -25,76 +25,97 @@
 <div class="container">
     <h1>Kiwix</h1>
     <h2>(for Sandstorm)</h2>
-    <br>
-    <p>
-        <p>Kiwix! Now upload something.</p>
-    </p>
-    <br>
-    <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
-        <div class="row fileupload-buttonbar">
+    {% if not zim_file_exists %}
+        <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
+            <div class="row fileupload-buttonbar">
+                <div class="col-lg-12">
+                    <span class="btn btn-success fileinput-button">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>Upload zim file</span>
+                        <input type="file" name="file">
+                    </span>
+                    OR just drag-n-drop it (some browsers).
+                </div>
+            </div>
+            <table role="presentation" class="table"><tbody class="files"></tbody></table>
+        </form>
+        <br>
+        <center>
+        <span class="row fileupload-buttonbar fileupload-processing hidden" id="kiwix-waiting">
+            <span class="col-lg-12 fileupload-process">
+            </span>
+        </span>
+        </center>
+        <div class="row hidden" id="kiwix-link">
             <div class="col-lg-12">
-                <span class="btn btn-success fileinput-button">
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span>Upload zim file</span>
-                    <input type="file" name="file">
-                </span>
-                OR just drag-n-drop it (some browsers).
+                <br><br>
+                <a href="/kiwix/">Done! Check it out.</a>
+                <br><br>
             </div>
         </div>
-        <table role="presentation" class="table"><tbody class="files"></tbody></table>
-    </form>
-    <br>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">Keep in mind</h3>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Keep in mind</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>Be mindful of your quota</li>
+                    <li>Get a torrent file if you can help it</li>
+                </ul>
+            </div>
         </div>
-        <div class="panel-body">
-            <ul>
-                <li>Be mindful of your quota</li>
-                <li>Get a torrent file if you can help it</li>
-            </ul>
-        </div>
-    </div>
+    {% else %}
+        <center>
+        <span class="row fileupload-buttonbar fileupload-processing" id="kiwix-waiting">
+            <span class="col-lg-12 fileupload-process">
+            </span>
+        </span>
+        </center>
+        {# Signal to js to redirect as soon as Kiwix is ready #}
+        <div id="kiwix-do-redirect"></div>
+    {% endif %}
+
 </div>
 
 
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted">
-            Uploading interface uses Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS framework (including Icons from <a href="http://glyphicons.com/">Glyphicons</a>).
-        </p>
-    </div>
-</footer>
+{% if not zim_file_exists %}
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">
+                Uploading interface uses Twitter's <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> CSS framework (including Icons from <a href="http://glyphicons.com/">Glyphicons</a>).
+            </p>
+        </div>
+    </footer>
 
-{% raw %}
-<script id="template-upload" type="text/x-tmpl">
-    <tr class="template-upload fade">
-        <td>
-            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <div class="progress-bar progress-bar-success" style="width:0%;"></div>
-            </div>
-        </td>
-        <td>
-            <button class="btn btn-warning cancel">
-                <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>Cancel</span>
-            </button>
-        </td>
-    </tr>
-</script>
-<script id="template-download" type="text/x-tmpl">
-{% { %}
-    <tr class="template-download fade">
-        <td>
-            {% if (o.files[0].error) { %}
-                <div><span class="label label-danger">Error</span> {%=o.files[0].error%}</div>
-            {% } else { %}
-                <a href='/kiwix/'>Done! Check it out.</a>
-            {% } %}
-        </td>
-    </tr>
-{% } %}
-</script>
-{% endraw %}
+    {% raw %}
+    <script id="template-upload" type="text/x-tmpl">
+        <tr class="template-upload fade">
+            <td>
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="progress-bar progress-bar-success" style="width:0%;"></div>
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            </td>
+        </tr>
+    </script>
+    <script id="template-download" type="text/x-tmpl">
+    {% { %}
+        <tr class="template-download fade">
+            <td>
+                {% if (o.files[0].error) { %}
+                    <div><span class="label label-danger">Error</span> {%=o.files[0].error%}</div>
+                {% } %}
+            </td>
+        </tr>
+    {% } %}
+    </script>
+    {% endraw %}
+{% endif %}
+
 </body>
 </html>
