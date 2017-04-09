@@ -23,8 +23,14 @@
 
 <body>
 <div class="container">
-    <h1>Kiwix (for Sandstorm)</h1>
-    <center><img src="/static/img/kiwix-logo.png"></center>
+    <div class="row">
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-8">
+            <img src="/static/img/kiwix-logo.png">
+            <h1>Kiwix (for Sandstorm)</h1>
+        </div>
+    </div>
     {% if not zim_file_exists %}
         <div id="slide-intro">
             <h2>Welcome</h2>
@@ -79,7 +85,9 @@
             <br>
         </div>
         <div id="slide-upload" class="hidden">
-            <p>Upload your file. (You can even drag and drop the file on some browsers)</p>
+            <h2>Upload content file</h2>
+
+            <p>Now, let's get your content file onto this grain. (Hint: you can even drag and drop the file on some browsers)</p>
             <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
                 <table role="presentation" class="table"><tbody class="files"></tbody></table>
                 <div class="row fileupload-buttonbar">
@@ -132,12 +140,12 @@
     {% raw %}
     <script id="template-upload" type="text/x-tmpl">
         <div class="row template-upload fade">
-            <div class="col-lg-9">
+            <div class="col-sm-9">
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                     <div class="progress-bar progress-bar-success" style="width:0%;"></div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-sm-3">
                 <button class="btn btn-warning cancel">
                     <i class="glyphicon glyphicon-ban-circle"></i>
                     <span>Cancel</span>
