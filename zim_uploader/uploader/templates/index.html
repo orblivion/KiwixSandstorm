@@ -23,54 +23,96 @@
 
 <body>
 <div class="container">
-    <h1>Kiwix</h1>
-    <h2>(for Sandstorm)</h2>
+    <h1>Kiwix (for Sandstorm)</h1>
+    <center><img src="/static/img/kiwix-logo.png"></center>
     {% if not zim_file_exists %}
-        <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
-            <div class="row fileupload-buttonbar">
-                <div class="col-lg-12">
-                    <span class="btn btn-success fileinput-button">
-                        <i class="glyphicon glyphicon-plus"></i>
-                        <span>Upload zim file</span>
-                        <input type="file" name="file">
-                    </span>
-                    OR just drag-n-drop it (some browsers).
+        <div id="slide-intro">
+            <h2>Welcome</h2>
+            <p>With Kiwix, you can run your own copy of Wikipedia, or lots of other open data content, on your own Sandstorm server. Content files can be gigabytes in size, so this is recommended for servers that you can access on a local network.</p>
+            <p><strong>So how does it work?</strong></p>
+            <ul>
+                <li>Get a content file from Kiwix's website (or somewhere else)</li>
+                <li>Upload it here, into this Sandstorm grain</li>
+                <li>Enjoy your content!</li>
+            </ul>
+            <a href="#" class="to-slide-download btn btn-primary">Let's get a content file!</a>
+            <a href="#" class="to-slide-upload btn btn-info">I already have a content file</a>
+            <br>
+            <br>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Learn More</h3>
+                </div>
+                <div class="panel-body">
+                    <p>Learn more about the <a href="http://kiwix.org" target="_blank" rel="noopener noreferrer">Kiwix</a> project. There are also apps available for desktop and mobile.</p>
                 </div>
             </div>
-            <table role="presentation" class="table"><tbody class="files"></tbody></table>
-        </form>
-        <br>
-        <center>
-        <span class="row fileupload-buttonbar fileupload-processing hidden" id="kiwix-waiting">
-            <span class="col-lg-12 fileupload-process">
-            </span>
-        </span>
-        </center>
-        <div class="row hidden" id="kiwix-link">
-            <div class="col-lg-12">
-                <br><br>
-                <a href="/kiwix/">Done! Check it out.</a>
-                <br><br>
-            </div>
+            <br>
+            <br>
+            <br>
         </div>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Keep in mind</h3>
+        <div id="slide-download" class="hidden">
+            <h2>Download content file</h2>
+
+            <p>Download one content file from the Kiwix website. (If you want multiple content files, make separate grains for each one). The file name will have a ".zim" extension. </p>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Note:</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>Be mindful of your Sandstorm quota. If you're running this on Sandstorm Oasis, you probably don't want to upload a gigabytes large content file.</li>
+                        <li>Get a torrent file if you can help it. It'll help save bandwidth for Kiwix, and will probably be faster for you.</li>
+                    </ul>
+                </div>
             </div>
-            <div class="panel-body">
-                <ul>
-                    <li>Be mindful of your quota</li>
-                    <li>Get a torrent file if you can help it</li>
-                </ul>
+
+            <h3>Choose from:</h3>
+            <ul class="list-group">
+                <a href="http://wiki.kiwix.org/wiki/Content"><li class="list-group-item">Popular content (scroll down to "Content only". Don't get the Kiwix software for this!)</li></a>
+                <a href="http://wiki.kiwix.org/wiki/Content"><li class="list-group-item">All English content</li></a>
+                <a href="http://wiki.kiwix.org/wiki/Content_in_all_languages"><li class="list-group-item">All content in all languages</li></a>
+            </ul>
+
+            <a href="#" class="to-slide-upload btn btn-primary">Okay, I got my content file.</a>
+            <br>
+        </div>
+        <div id="slide-upload" class="hidden">
+            <p>Upload your file. (You can even drag and drop the file on some browsers)</p>
+            <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
+                <table role="presentation" class="table"><tbody class="files"></tbody></table>
+                <div class="row fileupload-buttonbar">
+                    <div class="col-lg-12">
+                        <span class="btn btn-success fileinput-button">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>Upload your content file (.zim)</span>
+                            <input type="file" name="file">
+                        </span>
+                        <a href="#" class="to-slide-download btn btn-primary">Oops, go back to download</a>
+                    </div>
+                </div>
+            </form>
+            <br>
+        </div>
+        <div id="slide-done" class="hidden">
+            <div class="row" id="kiwix-waiting">
+                <div class="col-lg-12">
+                    <center><img src="static/img/loading.gif"></center>
+                </div>
+            </div>
+            <div class="row hidden" id="kiwix-link">
+                <div class="col-lg-12">
+                    <a class="btn btn-primary btn-lg" href="/kiwix/">Done! Check it out.</a>
+                </div>
             </div>
         </div>
     {% else %}
-        <center>
-        <span class="row fileupload-buttonbar fileupload-processing" id="kiwix-waiting">
-            <span class="col-lg-12 fileupload-process">
-            </span>
-        </span>
-        </center>
+        <div class="row" id="kiwix-waiting">
+            <div class="col-lg-12">
+                <center><img src="static/img/loading.gif"></center>
+            </div>
+        </div>
         {# Signal to js to redirect as soon as Kiwix is ready #}
         <div id="kiwix-do-redirect"></div>
     {% endif %}

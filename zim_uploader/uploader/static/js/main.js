@@ -56,10 +56,28 @@ $(function () {
     }
 
     $('#fileupload').bind('fileuploaddone', function (e, data) {
-      $('#kiwix-waiting').removeClass('hidden')
+      $('#slide-done').removeClass('hidden')
+      $('#slide-upload').addClass('hidden')
+      $('#slide-intro').addClass('hidden')
+      $('#slide-download').addClass('hidden')
+
       setTimeout(kiwixCheck, 1)
     })
     if ($('#kiwix-do-redirect').length) {
       setTimeout(kiwixCheck, 1)
     }
+
+    $('.to-slide-download').click(function(){
+        $('#slide-download').removeClass('hidden')
+        $('#slide-intro').addClass('hidden')
+        $('#slide-upload').addClass('hidden')
+        $('#slide-done').addClass('hidden')
+    })
+
+    $('.to-slide-upload').click(function(){
+        $('#slide-upload').removeClass('hidden')
+        $('#slide-intro').addClass('hidden')
+        $('#slide-download').addClass('hidden')
+        $('#slide-done').addClass('hidden')
+    })
 });
