@@ -6,16 +6,16 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fileupload.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fileupload-ui.css') }}">
 
-<script src="static/js/jquery-3.2.0.min.js"></script>
-<script src="static/js/vendor/jquery.ui.widget.js"></script>
-<script src="static/js/tmpl.js"></script>
-<script src="static/js/jquery.iframe-transport.js"></script>
-<script src="static/js/jquery.fileupload.js"></script>
-<script src="static/js/jquery.fileupload-process.js"></script>
-<script src="static/js/jquery.fileupload-validate.js"></script>
-<script src="static/js/jquery.fileupload-ui.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/main.js"></script>
+<script src="{{ url_for('static', filename='js/jquery-3.2.0.min.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/vendor/jquery.ui.widget.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/tmpl.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/jquery.iframe-transport.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/jquery.fileupload.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/jquery.fileupload-process.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/jquery.fileupload-validate.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/jquery.fileupload-ui.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}") }}></script>
+<script src="{{ url_for('static', filename='js/main.js') }}") }}></script>
 <!--[if (gte IE 8)&(lt IE 10)]>
 <script src="js/cors/jquery.xdr-transport.js"></script>
 <![endif]-->
@@ -27,7 +27,7 @@
         <div class="col-sm-4">
         </div>
         <div class="col-sm-8">
-            <img src="/static/img/kiwix-logo.png">
+            <img src="{{ url_for('static', filename='img/kiwix-logo.png') }}">
             <h1>Kiwix (for Sandstorm)</h1>
         </div>
     </div>
@@ -110,7 +110,7 @@
         <div id="slide-done" class="hidden">
             <div class="row" id="kiwix-waiting">
                 <div class="col-lg-12">
-                    <center><img src="static/img/loading.gif"></center>
+                    <center><img src="{{ url_for('static', filename='img/loading.gif') }}"></center>
                 </div>
             </div>
             <div class="row hidden" id="kiwix-link">
@@ -118,11 +118,14 @@
                     <a class="btn btn-primary btn-lg" href="/kiwix/">Done! Check it out.</a>
                 </div>
             </div>
+            <br>
+            <br>
+            <br>
         </div>
     {% else %}
         <div class="row" id="kiwix-waiting">
             <div class="col-lg-12">
-                <center><img src="static/img/loading.gif"></center>
+                <center><img src="{{ url_for('static', filename='img/loading.gif') }}"></center>
             </div>
         </div>
         {# Signal to js to redirect as soon as Kiwix is ready #}

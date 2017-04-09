@@ -17,7 +17,7 @@ parser.add_argument('-d', dest='debug', action='store_true',
 
 args = parser.parse_args()
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='upload_static')
 app.config['DEBUG'] = args.debug
 app.config['SECRET_KEY'] = 'hard to guess string'
 app.config['MAX_CONTENT_LENGTH'] = 6 * 1024 * 1024
