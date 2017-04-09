@@ -40,11 +40,9 @@ $(function () {
     var kiwixCheck = function() {
         $.ajax({method: 'GET', url: '/kiwix/'})
           .fail(function() {
-            console.log("not yet")
             setTimeout(kiwixCheck, 100)
           })
           .done(function() {
-            console.log("okay done")
             if ($('#kiwix-do-redirect').length) {
               window.location = '/kiwix/';
             } else {
@@ -55,14 +53,22 @@ $(function () {
           })
     }
 
-    $('#fileupload').bind('fileuploaddone', function (e, data) {
-      $('#slide-done').removeClass('hidden')
-      $('#slide-upload').addClass('hidden')
-      $('#slide-intro').addClass('hidden')
-      $('#slide-download').addClass('hidden')
+    $('#fileupload')
+        .bind('fileuploaddone', function (e, data) {
+            $('#slide-done').removeClass('hidden')
+            $('#slide-upload').addClass('hidden')
+            $('#slide-intro').addClass('hidden')
+            $('#slide-download').addClass('hidden')
 
-      setTimeout(kiwixCheck, 1)
-    })
+            setTimeout(kiwixCheck, 1)
+        })
+        .bind('fileuploadsend', function (e, data) {
+            $('#slide-upload-buttons').addClass('hidden')
+        })
+        .bind('fileuploadfail', function (e, data) {
+            $('#slide-upload-buttons').removeClass('hidden')
+        })
+
     if ($('#kiwix-do-redirect').length) {
       setTimeout(kiwixCheck, 1)
     }
