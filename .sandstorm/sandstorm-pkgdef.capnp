@@ -27,8 +27,8 @@ const pkgdef :Spk.PackageDefinition = (
 
     actions = [
       # Define your "new document" handlers here.
-      ( title = (defaultText = "New wiki dump"),
-        nounPhrase = (defaultText = "wiki dump"),
+      ( title = (defaultText = "New open content mirror"),
+        nounPhrase = (defaultText = "open content mirror"),
         command = .myCommand
         # The command to run when starting for the first time. (".myCommand"
         # is just a constant defined at the bottom of the file.)
@@ -118,7 +118,7 @@ const pkgdef :Spk.PackageDefinition = (
       # in an app store. Note that the Markdown is not permitted to contain HTML nor image tags (but
       # you can include a list of screenshots separately).
 
-      shortDescription = (defaultText = "Wiki dump viewer"),
+      shortDescription = (defaultText = "Open content mirror"),
       # A very short (one-to-three words) description of what the app does. For example,
       # "Document editor", or "Notetaking", or "Email client". This will be displayed under the app
       # title in the grid view in the app market.
