@@ -13,6 +13,10 @@ if [ -f /var/data/chunking/* ]; then
     rm /var/data/chunking/*
 fi
 
+if [ ! -f /var/data/chunking/* ]; then
+    dd if=/dev/urandom bs=1 count=16 | base64 > /var/secret_key
+fi
+
 cd /var
 
 # Start the Zim file uploader via uwsgi if there's no Zim file
