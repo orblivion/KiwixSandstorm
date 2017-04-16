@@ -31,7 +31,12 @@
             <h1>Kiwix (for Sandstorm)</h1>
         </div>
     </div>
-    {% if not zim_file_exists %}
+    {% if read_only and not zim_file_exists %}
+        <div>
+            <h2>Oops</h2>
+            <p>This grain doesn't have content yet, and you don't have permission to upload any.</p>
+        <div>
+    {% elif not zim_file_exists %}
         <div id="slide-intro">
             <h2>Welcome</h2>
             <p>With Kiwix, you can run your own copy of Wikipedia, or lots of other open data content, on your own Sandstorm server. Content files can be gigabytes in size, so this is recommended for servers that you can access on a local network.</p>

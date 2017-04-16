@@ -7,7 +7,7 @@ import subprocess
 import traceback
 
 from flask import Flask, request, render_template, redirect, url_for
-from werkzeug import secure_filename
+from werkzeug import secure_filename, exceptions
 
 
 parser = argparse.ArgumentParser(description='Serve Zim file uploader.')
@@ -93,6 +93,8 @@ def _upload():
     # The user of the upload client should be the owner of the grain
     # At least, this will be the case when this project is completed
     if request.method == 'POST':
+        if 'uploader' not in request.headers['X-Sandstorm-Permissions']:
+            raise exceptions.Forbidden()
         files = request.files['file']
         content_range = _get_content_range(request)
 
@@ -132,6 +134,7 @@ def index():
     return render_template(
         'index.html',
         zim_file_exists=os.path.exists(COMPLETED_FILE_PATH),
+        read_only='uploader' not in request.headers['X-Sandstorm-Permissions'],
     )
 
 application = app.wsgi_app
