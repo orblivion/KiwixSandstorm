@@ -116,10 +116,11 @@ def _upload():
                 result['error'] = 'File too big'
             elif content_range['from'] != chunking_file_size_before:
                 result['error'] = 'Content range out of order'
-                if os.path.exists(chunking_file_path):
-                    os.remove(chunking_file_path)
             else:
                 _save_chunk(files, filename, mime_type, content_range, chunking_file_path, chunking_file_size_before)
+
+            if 'error' in result and os.path.exists(chunking_file_path):
+                os.remove(chunking_file_path)
 
             return json.dumps({"files": [result]})
 
