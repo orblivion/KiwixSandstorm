@@ -9,6 +9,9 @@ mkdir -p /var/log/nginx
 mkdir -p /var/lib/nginx
 mkdir -p /var/data
 mkdir -p /var/data/chunking
+if [ -f /var/data/chunking/* ]; then
+    rm /var/data/chunking/*
+fi
 
 cd /var
 

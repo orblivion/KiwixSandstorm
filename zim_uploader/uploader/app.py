@@ -1,7 +1,9 @@
 import argparse
+from glob import glob
 import json
 import os
 import re
+import subprocess
 import traceback
 
 from flask import Flask, request, render_template, redirect, url_for
@@ -55,11 +57,15 @@ def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, c
 
     if content_range['to'] + 1 >= content_range['total']:
         os.rename(chunking_file_path, COMPLETED_FILE_PATH)
-        # useful for debugging file uploading
-        #import subprocess
-        #print 'completed file md5', subprocess.check_output(
-        #    ['md5sum', COMPLETED_FILE_PATH]
-        #)
+        if app.config['DEBUG']:
+            # useful for debugging file uploading
+            print 'completed file md5', subprocess.check_output(
+                ['md5sum', COMPLETED_FILE_PATH]
+            )
+        # Just in case of botched previous uploads
+        for filename in glob(CHUNKING_FOLDER + '*'):
+            print "removing", filename
+            subprocess.call(['rm', filename])
 
     return True
 
