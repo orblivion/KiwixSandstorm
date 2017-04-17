@@ -21,6 +21,7 @@ set -euo pipefail
 
 set -euo pipefail
 
+DEPENDENCIES=/opt/app/dependencies
 VENV3=/opt/app/env3
 if [ ! -d $VENV3 ] ; then
     virtualenv -p python3 $VENV3
@@ -77,15 +78,42 @@ fi
 ZIM_UPLOADER=/opt/app/zim_uploader
 
 # Set up uploader
-FLASKFILEUPLOADERFILE=$ZIM_UPLOADER/uploader/env/lib/python2.7/site-packages/simplejson
+FLASKFILEUPLOADERFILE=$ZIM_UPLOADER/env/lib/python2.7/site-packages/flask/app.py
 if [ ! -f $FLASKFILEUPLOADERFILE ]; then
+    cd $DEPENDENCIES
+
+    echo "Getting jquery file uploader assets"
+    rm -rf jQuery-File-Upload
+    git clone https://github.com/blueimp/jQuery-File-Upload
+    git -C jQuery-File-Upload checkout 0b4af3c57b86b3c7147c4d7c75deb71a0133f0e3
+
+    echo "Getting JavaScript-Templates assets"
+    rm -rf JavaScript-Templates
+    git clone https://github.com/blueimp/JavaScript-Templates
+    git -C JavaScript-Templates checkout dc7631396cd541db5644aa2c651e342c68511aad
+
+    echo "Getting Bootstrap assets"
+    rm -f bootstrap.min.js
+    wget https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
+    cat bootstrap.min.js | sha256sum | grep 53964478a7c634e8dad34ecc303dd8048d00dce4993906de1bacf67f663486ef
+    rm -f bootstrap.min.css
+    wget https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+    cat bootstrap.min.css | sha256sum | grep f75e846cc83bd11432f4b1e21a45f31bc85283d11d372f7b19accd1bf6a2635c
+
+    echo "Getting jquery assets"
+    rm -f jquery-3.2.0.min.js
+    wget https://code.jquery.com/jquery-3.2.0.min.js
+    cat jquery-3.2.0.min.js | sha256sum | grep 2405bdf4c255a4904671bcc4b97938033d39b3f5f20dd068985a8d94cde273e2
+
     echo "Installing dependencies for uploader"
     cd $ZIM_UPLOADER
     virtualenv env
     env/bin/pip install -r uploader/requirements.txt
+
     echo "Installed dependencies for uploader"
 else
     echo "Already installed dependencies for uploader"
 fi
+
 
 exit 0
