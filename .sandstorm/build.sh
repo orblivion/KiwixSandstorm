@@ -85,17 +85,18 @@ if [ ! -f $FLASKFILEUPLOADERFILE ]; then
     echo "Getting jquery file uploader assets"
     rm -rf jQuery-File-Upload
     git clone https://github.com/blueimp/jQuery-File-Upload
-    git -C jQuery-File-Upload checkout 0b4af3c57b86b3c7147c4d7c75deb71a0133f0e3
+    git -C jQuery-File-Upload checkout 0b4af3c57b86b3c7147c4d7c75deb71a0133f0e3 # tag v9.18.0
 
     echo "Getting JavaScript-Templates assets"
     rm -rf JavaScript-Templates
     git clone https://github.com/blueimp/JavaScript-Templates
-    git -C JavaScript-Templates checkout dc7631396cd541db5644aa2c651e342c68511aad
+    git -C JavaScript-Templates checkout dc7631396cd541db5644aa2c651e342c68511aad # tag v3.8.0
 
-    echo "Getting Bootstrap assets"
-    rm -f bootstrap.min.js
-    wget https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js
-    cat bootstrap.min.js | sha256sum | grep 53964478a7c634e8dad34ecc303dd8048d00dce4993906de1bacf67f663486ef
+    echo "Getting bootstrap repo for glyphicons-halflings-regular.* and bootstrap.min.js"
+    git clone https://github.com/twbs/bootstrap-sass
+    git -C bootstrap-sass checkout 5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47 # tag v3.3.7
+
+    echo "Getting Bootstrap css. (Not built in the repos)"
     rm -f bootstrap.min.css
     wget https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
     cat bootstrap.min.css | sha256sum | grep f75e846cc83bd11432f4b1e21a45f31bc85283d11d372f7b19accd1bf6a2635c
