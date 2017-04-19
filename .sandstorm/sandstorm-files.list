@@ -261,6 +261,7 @@ opt/app/zim_uploader/uploader/upload_static/js/jquery.iframe-transport.js
 opt/app/zim_uploader/uploader/upload_static/js/main.js
 opt/app/zim_uploader/uploader/upload_static/js/tmpl.min.js
 opt/app/zim_uploader/uploader/upload_static/js/vendor/jquery.ui.widget.js
+proc/cpuinfo
 sandstorm-http-bridge
 sandstorm-http-bridge-config
 sandstorm-manifest
