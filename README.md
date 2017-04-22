@@ -9,3 +9,29 @@ See `TODO.md` file to get an idea of the current status of this packaging projec
 kiwix
 xapian
 ...
+
+# Hacks
+
+This project took a couple hacks to implement on Sandstorm. Here they are described as best as can be recalled.
+
+## File uploading
+
+Firstly, though the Kiwix desktop and mobile programs have built in downloaders, the sever does not. So, a new web-based uploader interface needed to be made. I primarily use flask, bootstrap and jquery-file-uploader.
+
+## Chunking uploads
+
+The usual way to upload large files over HTTP would be to do chunked uploads with the Content-Range header. This app uses jquery-file-uploader to implement the client side of this.
+
+However, as of now Sandstorm doesn't allow the Content-Range header to pass through. So, this package uses a hackaround: the Content-Range header is copied to POST. Look for `contentRange` in main.js and app.py to find it.
+
+## Polling via js for Kiwix to start
+
+If Nginx directs a request to Kiwix before it's started, it will of course fail, and respond with a 502. To prevent this, this package stops the user from visiting Kiwix until it's loaded. How does it figure it out?
+
+Most Sandstorm apps do this by polling in bash on a socket in launcher.sh, thus before the user sees a loaded page. Polling on a socket wasn't so easy to figure out for a standalone executable program like Kiwix (as opposed to, say, a Python/wsgi app), assuming it's even possible. Plus, there's the fact that before the user uploads a file, the user needs to see a page (the upload page) before Kiwix starts. Once the user uploads the file, we need to poll Kiwix, despite that the app has already started. The obvious answer is to poll via javascript, and that's what we do. Look for `kiwixCheck` in main.js to find it.
+
+The other question is, how can the browser route between the uploader and kiwix at the same time, on the same domain? Well, the root path (`/`) on Kiwix is the "library" view where it lists all the files. For Sandstorm, I set up the package to be one zim file per grain, thus we don't need this view. The kiwix file is saved inside the grain as `kiwix.zim`, thus the "home" path is always `/kiwix/`. This is what is polled to see if Kiwix is running, and this is where the user is sent once it's ready. The uploader (along with this javascript), then, is mapped (in nginx.conf) to `/`.
+
+## Symlinked static files
+
+Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to include them in the source. Instead, they are loaded as dependencies during the build process, and symlinked into the static directory.
