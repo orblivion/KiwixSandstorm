@@ -22,4 +22,4 @@ When you start up the app for the first time, it will guide you through the proc
 
 * Get a content file from Kiwix's website (or somewhere else)
 * Upload it into the Sandstorm grain
-* Enjoy your content!
+* Enjoy your content, and share with others!
