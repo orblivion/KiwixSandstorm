@@ -4,12 +4,6 @@ Relatedly, I acknowledge that the build process is currently not secure. Firstly
 
 See `TODO.md` file to get an idea of the current status of this packaging project.
 
-# Dependencies
-
-kiwix
-xapian
-...
-
 # Hacks
 
 This project took a couple hacks to implement on Sandstorm. Here they are described as best as can be recalled.
