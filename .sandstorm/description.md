@@ -1,8 +1,8 @@
-# Host wikipedia on a local server. Just a few clicks to set up.
+# Wikipedia without the Internet. Just a few clicks to set up.
 
 ## Who is this for?
 
-Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own local copy of Wikipedia.
+Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of Wikipedia, available on your local network even when you're disconnected from the Internet.
 
 Now, with Kiwix, you can easily set up your own copy of Wikipedia, Wikiquote, Wikivoyage, or many other open content sources with the ease that comes with Sandstorm.
 
@@ -20,6 +20,6 @@ Also note that if you are running on somebody else's server (including Sandstorm
 
 When you start up the app for the first time, it will guide you through the process:
 
-* Get a content file from Kiwix's website (or somewhere else)
-* Upload it into the Sandstorm grain
+* Get a content file from the Internet
+* Upload it to your local Sandstorm server
 * Enjoy the content, and share it with others on your local network!
