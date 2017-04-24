@@ -220,6 +220,8 @@ opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/local.py
 opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/local.pyc
 opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/routing.py
 opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/routing.pyc
+opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/test.py
+opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/test.pyc
 opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/urls.py
 opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/urls.pyc
 opt/app/zim_uploader/env/lib/python2.7/site-packages/werkzeug/utils.py
@@ -273,6 +275,10 @@ usr/bin/uwsgi-core
 usr/lib/python2.7/StringIO.py
 usr/lib/python2.7/StringIO.pyc
 usr/lib/python2.7/UserDict.py
+usr/lib/python2.7/_LWPCookieJar.py
+usr/lib/python2.7/_LWPCookieJar.pyc
+usr/lib/python2.7/_MozillaCookieJar.py
+usr/lib/python2.7/_MozillaCookieJar.pyc
 usr/lib/python2.7/__future__.py
 usr/lib/python2.7/__future__.pyc
 usr/lib/python2.7/_abcoll.py
@@ -291,6 +297,8 @@ usr/lib/python2.7/collections.py
 usr/lib/python2.7/collections.pyc
 usr/lib/python2.7/contextlib.py
 usr/lib/python2.7/contextlib.pyc
+usr/lib/python2.7/cookielib.py
+usr/lib/python2.7/cookielib.pyc
 usr/lib/python2.7/copy.py
 usr/lib/python2.7/copy.pyc
 usr/lib/python2.7/copy_reg.py
