@@ -9,7 +9,8 @@ mkdir -p /var/log/nginx
 mkdir -p /var/lib/nginx
 mkdir -p /var/data
 mkdir -p /var/data/chunking
-if [ -f /var/data/chunking/* ]; then
+
+if [ -f /var/data/chunking/kiwix.zim ]; then
     rm /var/data/chunking/*
 fi
 
