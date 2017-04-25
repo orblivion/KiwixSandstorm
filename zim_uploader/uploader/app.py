@@ -44,13 +44,12 @@ def upload():
 
 
 def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, chunking_file_size_before):
-    # save file to disk
-    uploaded_file = open(
+    with open(
         chunking_file_path,
         'a' if os.path.exists(chunking_file_path) else 'w'
-    )
-    files.save(uploaded_file)
-    uploaded_file.close()
+    ) as uploaded_file:
+        # save file to disk
+        files.save(uploaded_file)
 
     # get chunk size after saving
     size = os.path.getsize(chunking_file_path)
@@ -67,7 +66,7 @@ def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, c
             print "removing", filename
             subprocess.call(['rm', filename])
 
-    return True
+    return size
 
 
 def _get_content_range(request):
@@ -119,7 +118,14 @@ def _upload():
             elif content_range['from'] != chunking_file_size_before:
                 result['error'] = 'Content range out of order'
             else:
-                _save_chunk(files, filename, mime_type, content_range, chunking_file_path, chunking_file_size_before)
+                result['size'] = _save_chunk(
+                    files,
+                    filename,
+                    mime_type,
+                    content_range,
+                    chunking_file_path,
+                    chunking_file_size_before,
+                )
 
             if 'error' in result and os.path.exists(chunking_file_path):
                 os.remove(chunking_file_path)
