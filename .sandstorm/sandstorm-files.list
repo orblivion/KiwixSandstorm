@@ -6,6 +6,7 @@ bin/bash
 bin/dash
 bin/dd
 bin/mkdir
+bin/rm
 bin/sh
 bin/sleep
 etc/alternatives/uwsgi
