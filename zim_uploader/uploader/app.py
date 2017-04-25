@@ -102,10 +102,15 @@ def _upload():
             filename = secure_filename(files.filename)
             chunking_file_path = os.path.join(CHUNKING_FOLDER, filename)
 
-            chunking_file_size_before = (
-                os.path.getsize(chunking_file_path) if os.path.exists(chunking_file_path)
-                else 0
-            )
+            if os.path.exists(chunking_file_path):
+                if content_range['from'] == 0:
+                    os.remove(chunking_file_path)
+                    chunking_file_size_before = 0
+                else:
+                    chunking_file_size_before = os.path.getsize(chunking_file_path)
+            else:
+                chunking_file_size_before = 0
+
             result = {'name': filename, 'type': mime_type, 'size': 0}
             if os.path.exists(COMPLETED_FILE_PATH):
                 # Just return success if this accidentally happens
