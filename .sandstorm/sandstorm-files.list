@@ -145,6 +145,8 @@ opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/helpers.py
 opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/helpers.pyc
 opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/json.py
 opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/json.pyc
+opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/logging.py
+opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/logging.pyc
 opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/module.py
 opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/module.pyc
 opt/app/zim_uploader/env/lib/python2.7/site-packages/flask/sessions.py
@@ -286,6 +288,8 @@ usr/lib/python2.7/_weakrefset.py
 usr/lib/python2.7/abc.py
 usr/lib/python2.7/argparse.py
 usr/lib/python2.7/argparse.pyc
+usr/lib/python2.7/atexit.py
+usr/lib/python2.7/atexit.pyc
 usr/lib/python2.7/base64.py
 usr/lib/python2.7/base64.pyc
 usr/lib/python2.7/bisect.py
@@ -332,6 +336,8 @@ usr/lib/python2.7/encodings/ascii.py
 usr/lib/python2.7/encodings/ascii.pyc
 usr/lib/python2.7/encodings/hex_codec.py
 usr/lib/python2.7/encodings/hex_codec.pyc
+usr/lib/python2.7/encodings/idna.py
+usr/lib/python2.7/encodings/idna.pyc
 usr/lib/python2.7/encodings/latin_1.py
 usr/lib/python2.7/encodings/latin_1.pyc
 usr/lib/python2.7/encodings/unicode_escape.py
@@ -376,6 +382,8 @@ usr/lib/python2.7/lib-dynload/_json.x86_64-linux-gnu.so
 usr/lib/python2.7/lib-dynload/_ssl.x86_64-linux-gnu.so
 usr/lib/python2.7/linecache.py
 usr/lib/python2.7/locale.py
+usr/lib/python2.7/logging/__init__.py
+usr/lib/python2.7/logging/__init__.pyc
 usr/lib/python2.7/mimetools.py
 usr/lib/python2.7/mimetools.pyc
 usr/lib/python2.7/mimetypes.py
@@ -413,6 +421,8 @@ usr/lib/python2.7/ssl.pyc
 usr/lib/python2.7/stat.py
 usr/lib/python2.7/string.py
 usr/lib/python2.7/string.pyc
+usr/lib/python2.7/stringprep.py
+usr/lib/python2.7/stringprep.pyc
 usr/lib/python2.7/struct.py
 usr/lib/python2.7/struct.pyc
 usr/lib/python2.7/subprocess.py
