@@ -31,7 +31,7 @@ $(function () {
         //xhrFields: {withCredentials: true},
         autoUpload: true,
         url: 'upload',
-        maxChunkSize: 5 * 1024 * 1024,
+        maxChunkSize: 10 * 1024 * 1024,
         formData: function (form) {
             return form.serializeArray();
         }
