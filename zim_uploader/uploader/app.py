@@ -108,7 +108,8 @@ def _upload():
             )
             result = {'name': filename, 'type': mime_type, 'size': 0}
             if os.path.exists(COMPLETED_FILE_PATH):
-                result['error'] = 'File with this name already exists'
+                # Just return success if this accidentally happens
+                result['size'] = chunking_file_size_before
             elif not allowed_file(files.filename):
                 result['error'] = 'File type not allowed'
             elif content_range['total'] > MAX_FILE_LENGTH:
@@ -116,7 +117,7 @@ def _upload():
                 # total that's too big.
                 result['error'] = 'File too big'
             elif content_range['from'] != chunking_file_size_before:
-                result['error'] = 'Content range out of order'
+                result['error'] = 'Error in uploading process'
             else:
                 result['size'] = _save_chunk(
                     files,
@@ -127,10 +128,12 @@ def _upload():
                     chunking_file_size_before,
                 )
 
-            if 'error' in result and os.path.exists(chunking_file_path):
-                os.remove(chunking_file_path)
-
-            return json.dumps({"files": [result]})
+            if 'error' in result:
+                if os.path.exists(chunking_file_path):
+                    os.remove(chunking_file_path)
+                return json.dumps({"files": [result]}), 400
+            else:
+                return json.dumps({"files": [result]})
 
     return redirect(url_for('index'))
 

@@ -63,9 +63,14 @@ $(function () {
             setTimeout(kiwixCheck, 1)
         })
         .bind('fileuploadsend', function (e, data) {
+            $('#upload-error').hide()
             $('#slide-upload-buttons').addClass('hidden')
         })
         .bind('fileuploadfail', function (e, data) {
+            if(data.response().jqXHR.responseJSON) {
+                $('#upload-error').show()
+                $('#upload-error-text').html(data.response().jqXHR.responseJSON.files[0].error)
+            }
             $('#slide-upload-buttons').removeClass('hidden')
         })
 

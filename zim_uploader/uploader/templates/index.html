@@ -113,6 +113,9 @@
             <h2>Upload content file</h2>
 
             <p>Now, let's get your content file onto this grain. (Tip: you can even drag and drop the file on some browsers)</p>
+            <div id="upload-error" style="display: none;">
+                <span class="label label-danger">Error</span> <span id="upload-error-text"></span>
+            </div>
             <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
                 <table role="presentation" class="table"><tbody class="files"></tbody></table>
                 <div class="row fileupload-buttonbar">
@@ -184,15 +187,6 @@
         </div>
     </script>
     <script id="template-download" type="text/x-tmpl">
-    {% { %}
-        <tr class="template-download fade">
-            <td>
-                {% if (o.files[0].error) { %}
-                    <div><span class="label label-danger">Error</span> {%=o.files[0].error%}</div>
-                {% } %}
-            </td>
-        </tr>
-    {% } %}
     </script>
     {% endraw %}
 {% endif %}
