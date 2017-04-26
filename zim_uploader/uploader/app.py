@@ -38,18 +38,26 @@ def allowed_file(filename):
 def upload():
     try:
         return _upload()
-    except Exception:
+    except Exception as e:
         print traceback.format_exc()
-        raise
-
+        return json.dumps(
+            {"files": [{'error': 'Unexpected error uploading file: ' + e.message}]}
+        ), 500
 
 def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, chunking_file_size_before):
-    with open(
-        chunking_file_path,
-        'a' if os.path.exists(chunking_file_path) else 'w'
-    ) as uploaded_file:
-        # save file to disk
-        files.save(uploaded_file)
+    try:
+        with open(
+            chunking_file_path,
+            'a' if os.path.exists(chunking_file_path) else 'w'
+        ) as uploaded_file:
+            # save file to disk
+            files.save(uploaded_file)
+    except IOError as e:
+        if e.errno == 28:
+            return {'error': 'Out of space on device. (Check your Sandstorm quota)'}, 409
+        else:
+            return {'error': 'File error: ' + e.message}, 409
+
 
     # get chunk size after saving
     size = os.path.getsize(chunking_file_path)
@@ -66,7 +74,7 @@ def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, c
             print "removing", filename
             subprocess.call(['rm', filename])
 
-    return size
+    return {'size': size}, None
 
 
 def _get_content_range(request):
@@ -101,6 +109,7 @@ def _upload():
             mime_type = files.content_type
             filename = secure_filename(files.filename)
             chunking_file_path = os.path.join(CHUNKING_FOLDER, filename)
+            error_code = None
 
             if os.path.exists(chunking_file_path):
                 if content_range['from'] == 0:
@@ -122,9 +131,9 @@ def _upload():
                 # total that's too big.
                 result['error'] = 'File too big'
             elif content_range['from'] != chunking_file_size_before:
-                result['error'] = 'Error in uploading process'
+                result['error'] = 'Error in uploading process (chunks out of order)'
             else:
-                result['size'] = _save_chunk(
+                _result_update, error_code = _save_chunk(
                     files,
                     filename,
                     mime_type,
@@ -132,11 +141,12 @@ def _upload():
                     chunking_file_path,
                     chunking_file_size_before,
                 )
+                result.update(_result_update)
 
             if 'error' in result:
                 if os.path.exists(chunking_file_path):
                     os.remove(chunking_file_path)
-                return json.dumps({"files": [result]}), 400
+                return json.dumps({"files": [result]}), error_code or 400
             else:
                 return json.dumps({"files": [result]})
 

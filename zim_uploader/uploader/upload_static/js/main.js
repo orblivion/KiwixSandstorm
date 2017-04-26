@@ -67,9 +67,15 @@ $(function () {
             $('#slide-upload-buttons').addClass('hidden')
         })
         .bind('fileuploadfail', function (e, data) {
-            if(data.response().jqXHR.responseJSON) {
-                $('#upload-error').show()
-                $('#upload-error-text').html(data.response().jqXHR.responseJSON.files[0].error)
+            var responseJSON = data.response().jqXHR.responseJSON
+            if(data.response().textStatus != 'abort') {
+                if(responseJSON) {
+                    $('#upload-error').show()
+                    $('#upload-error-text').html(responseJSON.files[0].error)
+                } else {
+                    $('#upload-error').show()
+                    $('#upload-error-text').html("Unknown Error")
+                }
             }
             $('#slide-upload-buttons').removeClass('hidden')
         })
