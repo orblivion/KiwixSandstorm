@@ -2,6 +2,7 @@ import argparse
 from glob import glob
 import json
 import os
+import random
 import re
 import subprocess
 import traceback
@@ -120,7 +121,29 @@ def _upload():
             else:
                 chunking_file_size_before = 0
 
-            result = {'name': filename, 'type': mime_type, 'size': 0}
+            result = {
+                'name': filename,
+                'type': mime_type,
+                'size': 0,
+                'total_size': content_range['total']
+            }
+
+            if os.path.exists('/opt/app/force_fail'):
+                result['error'] = 'Testing forced upload failure: ' + str(result)
+                return json.dumps({"files": [result]}), 400
+
+            if os.path.exists('/opt/app/random_fail'):
+                random_failure = random.randint(0, 8)
+                if random_failure == 0: # error message in 'error' field
+                    result['error'] = 'Testing random upload failure 0: ' + str(result)
+                    return json.dumps({"files": [result]}), 400
+                elif random_failure == 1: # error message without json
+                    return "Testing random upload failure 1", 400
+                elif random_failure == 2: # no error message
+                    return json.dumps({"files": [result]}), 400
+                elif random_failure == 3: # 500
+                    raise BaseException("Testing random upload failure 3")
+
             if os.path.exists(COMPLETED_FILE_PATH):
                 # Just return success if this accidentally happens
                 result['size'] = chunking_file_size_before
@@ -131,7 +154,10 @@ def _upload():
                 # total that's too big.
                 result['error'] = 'File too big'
             elif content_range['from'] != chunking_file_size_before:
-                result['error'] = 'Error in uploading process (chunks out of order)'
+                result['error'] = ''.join(
+                    'Error in uploading process. (Chunks out of order: size:%i ',
+                    'content_range:%s chunking_file_path: %s)',
+                ) % (chunking_file_size_before, content_range, chunking_file_path)
             else:
                 _result_update, error_code = _save_chunk(
                     files,
