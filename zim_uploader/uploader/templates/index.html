@@ -4,6 +4,7 @@
 <head>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fileupload.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
 
 <script src="{{ url_for('static', filename='js/jquery-3.2.0.min.js') }}") }}></script>
 <script src="{{ url_for('static', filename='js/vendor/jquery.ui.widget.js') }}") }}></script>
@@ -36,7 +37,7 @@
             <p>This grain doesn't have content yet, and you don't have permission to upload any.</p>
         <div>
     {% elif not zim_file_exists %}
-        <div id="slide-intro">
+        <div id="slide-intro" class="row"><div class="col-lg-12">
             <h2>Wikipedia without the Internet. Just a few clicks to set up.</h2>
 
             <h3>Who is this for?</h3>
@@ -48,6 +49,7 @@
 
             <p>Kiwix is a project independent of this Sandstorm app. Sandstorm makes Kiwix easy to set up, however there are still some limitations to the Sandstorm version. These limitations will hopefully be fixed in future versions, but if they are important to you now, you may choose the standard <a href="http://wiki.kiwix.org/wiki/Features#Web_server" target="_blank" rel="noopener noreferrer">Kiwix web server</a>:</p>
 
+            <h4>Known limitations</h4>
             <ul>
                 <li>Searching by document title should work, however searching by document content usually will not.</li>
                 <li>External links must manually be opened in new tabs</li>
@@ -62,8 +64,7 @@
                 <li>Enjoy the content, and share it with others on your local network!</li>
             </ul>
 
-            <a href="#" class="to-slide-download btn btn-primary">Let's get a content file!</a>
-            <a href="#" class="to-slide-upload btn btn-info">I already have a content file</a>
+            <a href="#" class="to-slide-download btn btn-lg btn-primary">Get Started </a>
             <br>
             <br>
             <div class="panel panel-default">
@@ -77,13 +78,16 @@
             <br>
             <br>
             <br>
-        </div>
-        <div id="slide-download" class="hidden">
+        </div></div>
+        <div id="slide-download" class="hidden row"><div class="col-lg-12">
             <h2>Download content file</h2>
 
-            <p>Download one content file from the Kiwix website. (If you want multiple content files, make separate grains for each one). The file name will have a ".zim" extension. </p>
+            <p>The first step is to download a content file to your personal computer (not onto Sandstorm just yet). If you already have a content file ready, you can <a href="#" class="to-slide-upload">skip ahead</a>.</p>
 
-            <div class="panel panel-default">
+            <p>For Kiwix, content is stored in ".zim" files. Most files, including Wikipedia, are available on the Kiwix website. If you want multiple content files, make a separate grain for each one.</p>
+
+            <h3>Choose a content file:</h3>
+            <div class="panel panel-default" style="margin-top:1em">
                 <div class="panel-heading">
                     <h3 class="panel-title">Note:</h3>
                 </div>
@@ -95,18 +99,19 @@
                 </div>
             </div>
 
-            <h3>Choose from:</h3>
             <ul class="list-group">
                 <a href="http://www.kiwix.org/downloads/" target="_blank" rel="noopener noreferrer"><li class="list-group-item"><strong>Popular content</strong> (Scroll down to "Content only". Don't get the Kiwix software for this!)</li></a>
                 <a href="http://wiki.kiwix.org/wiki/Content" target="_blank" rel="noopener noreferrer"><li class="list-group-item"><strong>All English content</strong></li></a>
                 <a href="http://wiki.kiwix.org/wiki/Content_in_all_languages" target="_blank" rel="noopener noreferrer"><li class="list-group-item"><strong>All content in all languages</strong></li></a>
             </ul>
 
-            <a href="#" class="to-slide-upload btn btn-primary">Okay, I got my content file.</a>
+            <a href="#" class="to-slide-upload btn btn-lg btn-primary">Okay, I got my content file.</a>
+            <a href="#" class="to-slide-intro btn btn-lg btn-secondary">Go back to intro</a>
+
             <br>
             <br>
             <br>
-        </div>
+        </div></div>
         <div id="slide-upload" class="hidden">
             <h2>Upload content file</h2>
 
@@ -136,20 +141,21 @@
 
                 <div class="row fileupload-buttonbar">
                     <div class="col-lg-12" id="slide-upload-buttons">
-                        <span class="btn btn-success fileinput-button">
+                        <span class="btn btn-lg btn-success fileinput-button">
                             <i class="glyphicon glyphicon-plus"></i>
                             <span>Upload your content file (.zim)</span>
                             <input type="file" name="file">
                         </span>
-                        <a href="#" class="to-slide-download btn btn-primary">Oops, go back to download</a>
+                        <a href="#" class="to-slide-download btn btn-lg btn-secondary">Oops, go back to download</a>
                     </div>
                 </div>
+
             </form>
             <br>
             <br>
             <br>
         </div>
-        <div id="slide-done" class="hidden">
+        <div id="slide-done" class="hidden row"><div class="col-lg-12">
             <div class="row" id="kiwix-waiting">
                 <div class="col-lg-12">
                     <center><img src="{{ url_for('static', filename='img/loading.gif') }}"></center>
@@ -163,7 +169,7 @@
             <br>
             <br>
             <br>
-        </div>
+        </div></div>
     {% else %}
         <div class="row" id="kiwix-waiting">
             <div class="col-lg-12">

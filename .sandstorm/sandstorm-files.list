@@ -251,6 +251,7 @@ opt/app/zim_uploader/env/local/lib
 opt/app/zim_uploader/uploader/app.py
 opt/app/zim_uploader/uploader/templates/index.html
 opt/app/zim_uploader/uploader/upload_static/css/bootstrap.min.css
+opt/app/zim_uploader/uploader/upload_static/css/custom.css
 opt/app/zim_uploader/uploader/upload_static/css/jquery.fileupload.css
 opt/app/zim_uploader/uploader/upload_static/fonts/glyphicons-halflings-regular.woff2
 opt/app/zim_uploader/uploader/upload_static/img/kiwix-logo.svg
