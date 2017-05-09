@@ -145,8 +145,8 @@ def _upload():
                     raise BaseException("Testing random upload failure 3")
 
             if os.path.exists(COMPLETED_FILE_PATH):
-                # Just return success if this accidentally happens
-                result['size'] = chunking_file_size_before
+                result['error'] = 'File already uploaded'
+                error_code = 409 # Conflict. Closest one I can think of
             elif not allowed_file(files.filename):
                 result['error'] = 'File type not allowed'
             elif content_range['total'] > MAX_FILE_LENGTH:
