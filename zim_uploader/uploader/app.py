@@ -181,10 +181,16 @@ def _upload():
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    # TODO split this into separate actual endpoints
+    page = request.args.get('page')
+    if page not in {'intro', 'download', 'upload'}:
+        page = 'intro'
+
     return render_template(
         'index.html',
         zim_file_exists=os.path.exists(COMPLETED_FILE_PATH),
         read_only='uploader' not in request.headers['X-Sandstorm-Permissions'],
+        page=page
     )
 
 application = app.wsgi_app

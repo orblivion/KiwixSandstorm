@@ -138,18 +138,4 @@ $(function () {
     if ($('#kiwix-do-redirect').length) {
       setTimeout(kiwixCheck, 1)
     }
-
-    $('.to-slide-download').click(function(){
-        $('#slide-download').removeClass('hidden')
-        $('#slide-intro').addClass('hidden')
-        $('#slide-upload').addClass('hidden')
-        $('#slide-done').addClass('hidden')
-    })
-
-    $('.to-slide-upload').click(function(){
-        $('#slide-upload').removeClass('hidden')
-        $('#slide-intro').addClass('hidden')
-        $('#slide-download').addClass('hidden')
-        $('#slide-done').addClass('hidden')
-    })
 });

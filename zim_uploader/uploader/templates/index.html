@@ -37,7 +37,7 @@
             <p>This grain doesn't have content yet, and you don't have permission to upload any.</p>
         <div>
     {% elif not zim_file_exists %}
-        <div id="slide-intro" class="row"><div class="col-lg-12">
+        <div id="slide-intro" class="{% if page != 'intro'%}hidden {% endif %}row"><div class="col-lg-12">
             <h2>Wikipedia without the Internet. Just a few clicks to set up.</h2>
 
             <h3>Who is this for?</h3>
@@ -64,7 +64,7 @@
                 <li>Enjoy the content, and share it with others on your local network!</li>
             </ul>
 
-            <a href="#" class="to-slide-download btn btn-lg btn-primary">Get Started </a>
+            <a href="?page=download" class="btn btn-lg btn-primary">Get Started </a>
             <br>
             <br>
             <div class="panel panel-default">
@@ -79,10 +79,10 @@
             <br>
             <br>
         </div></div>
-        <div id="slide-download" class="hidden row"><div class="col-lg-12">
+        <div id="slide-download" class="{% if page != 'download'%}hidden {% endif %}row"><div class="col-lg-12">
             <h2>Download content file</h2>
 
-            <p>The first step is to download a content file to your personal computer (not onto Sandstorm just yet). If you already have a content file ready, you can <a href="#" class="to-slide-upload">skip ahead</a>.</p>
+            <p>The first step is to download a content file to your personal computer (not onto Sandstorm just yet). If you already have a content file ready, you can <a href="?page=upload">skip ahead</a>.</p>
 
             <p>For Kiwix, content is stored in ".zim" files. Most files, including Wikipedia, are available on the Kiwix website. If you want multiple content files, make a separate grain for each one.</p>
 
@@ -105,14 +105,14 @@
                 <a href="http://wiki.kiwix.org/wiki/Content_in_all_languages" target="_blank" rel="noopener noreferrer"><li class="list-group-item"><strong>All content in all languages</strong></li></a>
             </ul>
 
-            <a href="#" class="to-slide-upload btn btn-lg btn-primary">Okay, I got my content file.</a>
-            <a href="#" class="to-slide-intro btn btn-lg btn-secondary">Go back to intro</a>
+            <a href="?page=upload" class="btn btn-lg btn-primary">Okay, I got my content file.</a>
+            <a href="?page=intro" class="btn btn-lg btn-secondary">Go back to intro</a>
 
             <br>
             <br>
             <br>
         </div></div>
-        <div id="slide-upload" class="hidden">
+        <div id="slide-upload" class="{% if page != 'upload'%}hidden {% endif %}">
             <h2>Upload content file</h2>
 
             <p>Now, let's get your content file onto this grain. (Tip: you can even drag and drop the file on some browsers)</p>
@@ -146,7 +146,7 @@
                             <span>Upload your content file (.zim)</span>
                             <input type="file" name="file">
                         </span>
-                        <a href="#" class="to-slide-download btn btn-lg btn-secondary">Oops, go back to download</a>
+                        <a href="?page=download" class="btn btn-lg btn-secondary">Oops, go back to download</a>
                     </div>
                 </div>
 
