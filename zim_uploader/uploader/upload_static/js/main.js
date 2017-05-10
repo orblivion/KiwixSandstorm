@@ -111,7 +111,7 @@ $(function () {
             $('#upload-error').hide()
             $('#upload-progress').show()
             setProgress()
-            $('#slide-upload-buttons').addClass('hidden')
+            $('#upload-interface').addClass('hidden')
         })
         .bind('fileuploadfail', function (e, data) {
             $('#upload-progress').hide()
@@ -125,7 +125,7 @@ $(function () {
                     tries = tries - 1
                 }
             }
-            $('#slide-upload-buttons').removeClass('hidden')
+            $('#upload-interface').removeClass('hidden')
             return
         })
         .bind('fileuploadchunkdone', function (e, data) {
