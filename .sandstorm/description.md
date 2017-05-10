@@ -14,8 +14,6 @@ Kiwix is a project independent of this Sandstorm app. Sandstorm makes Kiwix easy
 * External links must manually be opened in new tabs
 * Opening internal links in new tabs may feel awkward for users
 
-Also note that if you are running on somebody else's server (including Sandstorm Oasis) your storage quota may prohibit you from setting up some of the larger content (including Wikipedia)
-
 ## How does it work?
 
 When you start up the app for the first time, it will guide you through the process:
