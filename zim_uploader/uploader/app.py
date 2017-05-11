@@ -183,20 +183,21 @@ def gen_download_links():
     # Perhaps expand these soon, but with a chooser interface.
     languages = [('en', 'English')]
 
-    # (file_name_part, display_name, has_nopic_version)
+    # (file_name_part, display_name, full_approx_size, nopic_size)
+    # Only advertise approximate size because the size can change
     contents = [
-        ('wikipedia', 'Wikipedia', True),
-        ('wikivoyage', 'WikiVoyage', True),
-        ('wikisource', 'WikiSource', True),
-        ('wiktionary', 'Wiktionary', True),
+        ('wikipedia', 'Wikipedia', '55Gb', '15Gb'),
+        ('wikivoyage', 'WikiVoyage', '600Mb', '80Mb'),
+        ('wikisource', 'WikiSource', '8Gb', '2.5Gb'),
+        ('wiktionary', 'Wiktionary', '1.5Gb', '900Mb'),
 
         # PhET doesn't work yet on Kiwix for Sandstorm
-        # ('phet', 'PhET', False),
+        # ('phet', 'PhET', '12Mb', None),
     ]
 
     for lang_code, lang_name in languages:
-        for content_code, content_name, has_nopic in contents:
-            if has_nopic:
+        for content_code, content_name, full_approx_size, nopic_approx_size in contents:
+            if nopic_approx_size:
                 link_template = 'http://download.kiwix.org/zim/%s_%s_all%s.zim%s'
             else:
                 link_template = 'http://download.kiwix.org/zim/%s_%s%s.zim%s'
@@ -207,13 +208,15 @@ def gen_download_links():
                         content_code, lang_code, '', ''),
                     'torrent_link': link_template % (
                         content_code, lang_code, '', '.torrent'),
+                    'approx_size': full_approx_size,
                 },
                 'nopic': {
                     'direct_link': link_template % (
                         content_code, lang_code, '_nopic', ''),
                     'torrent_link': link_template % (
                         content_code, lang_code, '_nopic', '.torrent'),
-                } if has_nopic else None,
+                    'approx_size': nopic_approx_size,
+                } if nopic_approx_size else None,
                 'display_name': content_name,
                 'display_language': lang_name,
             }

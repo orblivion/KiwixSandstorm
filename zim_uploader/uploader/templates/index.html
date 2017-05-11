@@ -100,7 +100,7 @@
 
             <h3>Popular Content:</h3>
 
-            <p>Here are some quick links to popular items. <em>If any of the links go dead, a bug report would be appreciated! In the mean time, see "Browse All Content" below.</em></p>
+            <p>Here are some quick links to popular items. File sizes are estimates, as they may change over time. <em>If any of the links go dead, a bug report would be appreciated! In the mean time, see "Browse All Content" below.</em></p>
 
         </div>
             {% for download_links_column in download_links | slice(3) %}
@@ -110,12 +110,12 @@
                         <ul class="list-group">
                             <h4>{{ download_link.display_name }} {{ download_link.display_language }}</h4>
                             <br>
-                            <p><strong>Full Size</strong></p>
+                            <p><strong>Full Size</strong> (~{{ download_link.full.approx_size }})</p>
                             <a href="{{ download_link.full.direct_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Direct Download</a>
                             <a href="{{ download_link.full.torrent_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Torrent</a>
                             {% if download_link.nopic %}
                                 <br>
-                                <p><strong>No Images</strong> (significantly smaller)</p>
+                                <p><strong>No Images</strong> (~{{ download_link.nopic.approx_size }})</p>
                                 <a href="{{ download_link.nopic.direct_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Direct Download</a>
                                 <a href="{{ download_link.nopic.torrent_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Torrent</a>
                             {% endif %}
@@ -129,7 +129,7 @@
 
             <h3>Browse All Content:</h3>
 
-            <p>You can find much more content, including other Wikimedia projects (and even subsets of Wikipedia) available in many other languages.
+            <p>Here, you can find much more content, including other Wikimedia projects (and even subsets of Wikipedia) available in many other languages.
 
             <ul class="list-group">
                 <a href="http://wiki.kiwix.org/wiki/Content" target="_blank" rel="noopener noreferrer" class="list-group-item"><strong>All English content</strong></a>
