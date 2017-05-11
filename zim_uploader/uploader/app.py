@@ -179,6 +179,46 @@ def _upload():
     return redirect(url_for('index'))
 
 
+def gen_download_links():
+    # Perhaps expand these soon, but with a chooser interface.
+    languages = [('en', 'English')]
+
+    # (file_name_part, display_name, has_nopic_version)
+    contents = [
+        ('wikipedia', 'Wikipedia', True),
+        ('wikivoyage', 'WikiVoyage', True),
+        ('wikisource', 'WikiSource', True),
+        ('wiktionary', 'Wiktionary', True),
+
+        # PhET doesn't work yet on Kiwix for Sandstorm
+        # ('phet', 'PhET', False),
+    ]
+
+    for lang_code, lang_name in languages:
+        for content_code, content_name, has_nopic in contents:
+            if has_nopic:
+                link_template = 'http://download.kiwix.org/zim/%s_%s_all%s.zim%s'
+            else:
+                link_template = 'http://download.kiwix.org/zim/%s_%s%s.zim%s'
+
+            yield {
+                'full': {
+                    'direct_link': link_template % (
+                        content_code, lang_code, '', ''),
+                    'torrent_link': link_template % (
+                        content_code, lang_code, '', '.torrent'),
+                },
+                'nopic': {
+                    'direct_link': link_template % (
+                        content_code, lang_code, '_nopic', ''),
+                    'torrent_link': link_template % (
+                        content_code, lang_code, '_nopic', '.torrent'),
+                } if has_nopic else None,
+                'display_name': content_name,
+                'display_language': lang_name,
+            }
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     # TODO split this into separate actual endpoints
@@ -190,7 +230,8 @@ def index():
         'index.html',
         zim_file_exists=os.path.exists(COMPLETED_FILE_PATH),
         read_only='uploader' not in request.headers['X-Sandstorm-Permissions'],
-        page=page
+        page=page,
+        download_links=gen_download_links(),
     )
 
 application = app.wsgi_app
