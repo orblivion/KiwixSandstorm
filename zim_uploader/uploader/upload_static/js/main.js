@@ -73,16 +73,16 @@ $(function () {
         $('#upload-progress-sofarmegs').html(soFarMegs)
         $('#upload-progress-totalmegs').html(totalMegs)
     }
-    function getResponseError(jqXHR) {
+    function getResponseError(response) {
         var responseJSON
-        if (jqXHR.responseJSON)
-            responseJSON = jqXHR.responseJSON
+        if (response.jqXHR.responseJSON)
+            responseJSON = response.jqXHR.responseJSON
         else {
             try{
-                responseJSON = JSON.parse(jqXHR.responseText);
+                responseJSON = JSON.parse(response.jqXHR.responseText);
             }
             catch (error){
-                return "Unkown Error: " + jqXHR.responseText;
+                return "Unkown Error: " + response.jqXHR.responseText;
             }
         }
         return responseJSON.files[0].error
