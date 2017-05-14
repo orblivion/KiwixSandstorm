@@ -116,14 +116,20 @@ $(function () {
         .bind('fileuploadfail', function (e, data) {
             $('#upload-progress').hide()
             if(data.response().textStatus != 'abort') {
-                $('#upload-error').show()
-                $('#upload-error-text').html(getResponseError(data.response()))
-
                 data.uploadedBytes = lastUploadedBytes
+                var timeoutSeconds = null
                 if (tries >= 1) {
-                    setTimeout(data.submit.bind(data), 1000 * ((11 - tries) ** 2))
+                    timeoutSeconds = 2 ** (11 - tries)
+                    setTimeout(data.submit.bind(data), 1000 * timeoutSeconds)
                     tries = tries - 1
                 }
+
+                var errorText = getResponseError(data.response())
+                if (timeoutSeconds != null) {
+                    errorText += ' (retrying after ' + timeoutSeconds + ' seconds...)'
+                }
+                $('#upload-error-text').html(errorText)
+                $('#upload-error').show()
             }
             $('#upload-interface').removeClass('hidden')
             return
