@@ -64,9 +64,9 @@ $(function () {
             totalMegs = '?'
             percentage = '?'
         } else {
-            soFarMegs = Math.round(soFar / (1024 ** 2) )
-            totalMegs = Math.round(total / (1024 ** 2) )
-            percentage = (100 * soFar / total).toPrecision(5)
+            soFarMegs = Math.floor(soFar / (1024 ** 2))
+            totalMegs = Math.round(total / (1024 ** 2))
+            percentage = Math.floor(100 * soFar / total)
         }
 
         $('#upload-progress-percentage').html(percentage)
