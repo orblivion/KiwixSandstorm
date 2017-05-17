@@ -59,19 +59,20 @@ $(function () {
         var soFarMegs
         var totalMegs
 
-        if (total === undefined || soFar === undefined) {
-            soFarMegs = 0
-            totalMegs = '?'
-            percentage = '?'
+        if (total === undefined) {
+            $('#upload-progress-values').hide()
+            $('#upload-progress-placeholder').show()
         } else {
             soFarMegs = Math.floor(soFar / (1024 ** 2))
             totalMegs = Math.round(total / (1024 ** 2))
             percentage = Math.floor(100 * soFar / total)
-        }
 
-        $('#upload-progress-percentage').html(percentage)
-        $('#upload-progress-sofarmegs').html(soFarMegs)
-        $('#upload-progress-totalmegs').html(totalMegs)
+            $('#upload-progress-percentage').html(percentage)
+            $('#upload-progress-sofarmegs').html(soFarMegs)
+            $('#upload-progress-totalmegs').html(totalMegs)
+            $('#upload-progress-values').show()
+            $('#upload-progress-placeholder').hide()
+        }
     }
     function getResponseError(response) {
         var responseJSON
@@ -89,6 +90,7 @@ $(function () {
     }
 
     var lastUploadedBytes
+    var totalBytes
     var tries
     var MAX_TRIES = 10
     $('#fileupload')
@@ -99,18 +101,21 @@ $(function () {
             $('#slide-download').addClass('hidden')
 
             $('#upload-progress').hide()
+            $('#upload-progress-values').hide()
+            $('#upload-progress-placeholder').hide()
             setTimeout(kiwixCheck, 1)
         })
         .bind('fileuploadadd', function (e, data) {
             $('#upload-progress .cancel').off('click')
             $('#upload-progress .cancel').on('click', function(e){e.preventDefault(); data.abort()})
             lastUploadedBytes = 0
+            totalBytes = undefined
             tries = MAX_TRIES
         })
         .bind('fileuploadsend', function (e, data) {
             $('#upload-error').hide()
             $('#upload-progress').show()
-            setProgress()
+            setProgress(lastUploadedBytes, totalBytes)
             $('#upload-interface').addClass('hidden')
         })
         .bind('fileuploadfail', function (e, data) {
@@ -138,7 +143,8 @@ $(function () {
             var file = JSON.parse(data.result).files[0]
             tries = MAX_TRIES
             lastUploadedBytes = file['size']
-            setProgress(file['size'], file['total_size'])
+            totalBytes = file['total_size']
+            setProgress(lastUploadedBytes, totalBytes)
         })
 
     if ($('#kiwix-do-redirect').length) {

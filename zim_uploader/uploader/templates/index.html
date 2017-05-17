@@ -142,7 +142,11 @@
             <form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
                 <table role="presentation" class="table"><tbody class="files">
                     <div id="upload-progress" class="row template-upload fade in" style="display: none;">
-                        <div class="col-sm-9">
+                        <div class="col-sm-9" id="upload-progress-placeholder">
+                            <span class="label label-success">Progress:</span>
+                            <span>Sending...</span>
+                        </div>
+                        <div class="col-sm-9" id="upload-progress-values">
                             <!-- A bootstrap progress bar used too much CPU. It'll be on for a long time for these large uploads, so it's not worth it. -->
                             <span class="label label-success">Progress:</span>
                             <span id="upload-progress-percentage"></span>%
