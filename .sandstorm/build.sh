@@ -23,15 +23,6 @@ set -euo pipefail
 
 DEPENDENCIES=/opt/app/dependencies
 VENV3=/opt/app/env3
-if [ ! -d $VENV3 ] ; then
-    virtualenv -p python3 $VENV3
-else
-    echo "$VENV3 exists, moving on"
-fi
-
-# TODO requirements.txt
-$VENV3/bin/pip3 install scikit-build==0.5.1
-$VENV3/bin/pip3 install meson==0.37.1
 
 # Build kiwix-lib
 KIWIXLIBFILE=/usr/local/lib/x86_64-linux-gnu/libkiwix.so
@@ -43,7 +34,9 @@ if [ ! -f $KIWIXLIBFILE ]; then
     rm -rf kiwix-lib
     git clone https://github.com/kiwix/kiwix-lib
     cd kiwix-lib
-    git checkout a3d01b6303c1ddf02a80d18b9283736c5e4f2f1c # alpha, but the only thing that builds on Debian Jesse so far
+    # Tip of master at the time of writing.
+    # TODO switch to tag (though still refer by hash) when this release stabilizes.
+    git checkout d360b9143c4911b56d9c69142109f1f6d867830d
     mkdir build
     $VENV3/bin/python3 $VENV3/bin/meson build
     cd build
@@ -64,7 +57,9 @@ if [ ! -f $KIWIXSERVEFILE ]; then
     rm -rf kiwix-tools
     git clone https://github.com/kiwix/kiwix-tools
     cd kiwix-tools
-    git checkout dc6c9d618f5de1fb5a219e531c46956858590ef4 # alpha, not tagged yet
+    # Tip of master at the time of writing.
+    # TODO switch to tag (though still refer by hash) when this release stabilizes.
+    git checkout c2d29376d9c63192cd94582806666f69422f19fa
     mkdir build
     $VENV3/bin/python3 $VENV3/bin/meson build
     cd build

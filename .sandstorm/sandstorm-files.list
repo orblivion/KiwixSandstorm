@@ -88,8 +88,6 @@ opt/app/dependencies/jQuery-File-Upload/js/jquery.fileupload.js
 opt/app/dependencies/jQuery-File-Upload/js/jquery.iframe-transport.js
 opt/app/dependencies/jQuery-File-Upload/js/vendor/jquery.ui.widget.js
 opt/app/dependencies/jquery-3.2.0.min.js
-opt/app/openzim/zimlib/src/.libs/libzim.so.0
-opt/app/openzim/zimlib/src/.libs/libzim.so.0.0.0
 opt/app/pugixml/libpugixml.so.1
 opt/app/pugixml/libpugixml.so.1.8
 opt/app/scripts/kiwix_delayed.sh
@@ -520,4 +518,7 @@ usr/lib/x86_64-linux-gnu/libyaml-0.so.2
 usr/lib/x86_64-linux-gnu/libyaml-0.so.2.0.4
 usr/local/bin/kiwix-serve
 usr/local/lib/x86_64-linux-gnu/libkiwix.so
+usr/local/lib/x86_64-linux-gnu/libkiwix.so.1
+usr/local/lib/x86_64-linux-gnu/libkiwix.so.1.0.0
+usr/local/lib/x86_64-linux-gnu/libzim.so
 usr/sbin/nginx

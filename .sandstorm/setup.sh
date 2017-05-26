@@ -56,22 +56,53 @@ apt-get install -y libmicrohttpd-dev
 echo "Installing uploader requirements"
 apt-get install -y python-dev
 
+VENV3=/opt/app/env3
+if [ ! -d $VENV3 ] ; then
+    virtualenv -p python3 $VENV3
+else
+    echo "$VENV3 exists, moving on"
+fi
+
+# TODO requirements.txt
+$VENV3/bin/pip3 install scikit-build==0.5.1
+$VENV3/bin/pip3 install meson==0.37.1
+
+# Build ninja - we need a version with pkg-config stuff
+NINJAFILE=/usr/local/bin/ninja
+if [ ! -f $NINJAFILE ]; then
+    echo "Buliding and installing ninja-build"
+
+    cd /opt/app
+    rm -rf ninja
+    git clone https://github.com/ninja-build/ninja.git
+    cd /opt/app/ninja
+    git checkout 717b7b4a31db6027207588c0fb89c3ead384747b
+
+    ./configure.py --bootstrap
+    cp ninja /usr/local/bin/
+
+    echo "Built and installed ninja"
+else
+    echo "Already built ninja"
+fi
+
 # Build libzim - we need a version with pkg-config stuff
 LIBZIMFILE=/usr/local/lib/libzim.la
 if [ ! -f $LIBZIMFILE ]; then
     echo "Buliding and installing libzim"
 
     cd /opt/app
-    rm -rf openzim
-    git clone https://gerrit.wikimedia.org/r/p/openzim.git
-    cd /opt/app/openzim
-    git checkout b7e5564423b8644cc6405badaee8b8c25ab382b8 # Until they make a release with this change.
-    cd zimlib
-    ./autogen.sh
-    ./configure
-    make
-    make install
-    pkg-config --modversion libzim
+    rm -rf libzim
+    git clone https://github.com/openzim/libzim/
+    cd /opt/app/libzim
+    # Tip of master at the time of writing.
+    # TODO switch to tag (though still refer by hash) when this release stabilizes.
+    git checkout 33d3763dfd63ffd4139f7f71aa065e13a853920f
+    mkdir build
+    $VENV3/bin/python3 $VENV3/bin/meson build
+    cd build
+    ninja
+    ninja install
     echo "Built and installed libzim"
 else
     echo "Already built libzim"
@@ -146,25 +177,6 @@ if [ ! -f $XAPIANCOREFILE ]; then
     echo "Built and installed xapian"
 else
     echo "Already built xapian"
-fi
-
-# Build ninja - we need a version with pkg-config stuff
-NINJAFILE=/usr/local/bin/ninja
-if [ ! -f $NINJAFILE ]; then
-    echo "Buliding and installing ninja-build"
-
-    cd /opt/app
-    rm -rf ninja
-    git clone https://github.com/ninja-build/ninja.git
-    cd /opt/app/ninja
-    git checkout 717b7b4a31db6027207588c0fb89c3ead384747b
-
-    ./configure.py --bootstrap
-    cp ninja /usr/local/bin/
-
-    echo "Built and installed ninja"
-else
-    echo "Already built ninja"
 fi
 
 service nginx stop
