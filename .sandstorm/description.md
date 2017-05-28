@@ -6,13 +6,17 @@ Are you setting up an IT system for your school with limited Internet access? Ar
 
 Now, with Kiwix, you can easily set up your own copy of Wikipedia, Wikiquote, Wikivoyage, or many other open content sources with the simplicity of Sandstorm.
 
-## Who is this not for?
+## Known Limitations
 
-Kiwix is a project independent of this Sandstorm app. Sandstorm makes Kiwix easy to set up, however there are still some limitations to the Sandstorm version. These limitations will hopefully be fixed in future versions, but if they are important to you now, you may choose the standard <a href="http://wiki.kiwix.org/wiki/Features#Web_server" target="_blank" rel="noopener noreferrer">Kiwix web server</a>:
+<a href="http://wiki.kiwix.org/wiki/Features#Web_server" target="_blank" rel="noopener noreferrer">Kiwix</a> is a project of its own. This Sandstorm app makes it easier to set up, but it is still in Beta, so some features may be rough around the edges:
 
-* Searching by document title should work, however searching by document content usually will not.
-* External links must manually be opened in new tabs
-* Opening internal links in new tabs may feel awkward for users
+* Searching by document content does not work for most wikis.
+* Search does not work at all for some wikis (It does work for full English Wikipedia).
+* The "Random Page" feature does not work.
+* Seeking within videos does not work.
+* External links must manually be opened in new tabs.
+
+If you are interested in seeing something in particular get improved, <em>please give feedback</em>!
 
 ## How does it work?
 
