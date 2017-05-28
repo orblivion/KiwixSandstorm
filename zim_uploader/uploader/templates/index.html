@@ -100,12 +100,12 @@
                     </div>
                 </div>
                 <h3>Popular Content:</h3>
-                <p>Here are some quick links to popular items. File sizes are estimates, as they may change over time. <em>If any of the links go dead, a bug report would be appreciated! In the mean time, see "Browse All Content" below.</em></p>
+                <p>Here are some quick links to popular items. File sizes are estimates, as they may change over time. <em>If any of the links go dead, a bug report would be appreciated! In the mean time, see "All Content" below.</em></p>
             </div>
             {% for download_links_column in download_links | slice(3) %}
                 <ul class="col-lg-4 list-group">
                 {% for download_link in download_links_column %}
-                    <li class="list-group-item">
+                    <li class="list-group-item list-group-item-success">
                         <ul class="list-group">
                             <h4>{{ download_link.display_name }} {{ download_link.display_language }}</h4>
                             <br>
@@ -124,12 +124,19 @@
                 </ul>
             {% endfor %}
             <div class="col-lg-12">
-                <h3>Browse All Content:</h3>
+                <h3>All Content:</h3>
                 <p>Here, you can find much more content, including other Wikimedia projects (and even subsets of Wikipedia) available in many other languages.
-                <ul class="list-group">
-                    <a href="http://wiki.kiwix.org/wiki/Content" target="_blank" rel="noopener noreferrer" class="list-group-item"><strong>All English content</strong></a>
-                    <a href="http://wiki.kiwix.org/wiki/Content_in_all_languages" target="_blank" rel="noopener noreferrer" class="list-group-item"><strong>All content in all languages</strong></a>
+                <ul class="col-lg-4 list-group">
+                    <li class="list-group-item list-group-item-success">
+                        <h4>Browse all Content</h4>
+                        <ul class="list-group">
+                            <a href="http://wiki.kiwix.org/wiki/Content" target="_blank" rel="noopener noreferrer" class="list-group-item list-group">English</a>
+                            <a href="http://wiki.kiwix.org/wiki/Content_in_all_languages" target="_blank" rel="noopener noreferrer" class="list-group-item list-group">All languages</a>
+                        </ul>
+                    </li>
                 </ul>
+            </div>
+            <div class="col-lg-12">
                 <a href="?page=upload" class="btn btn-lg btn-primary">Okay, I got my content file.</a>
                 <a href="?page=intro" class="btn btn-lg btn-secondary">Go back to intro</a>
                 <br>
