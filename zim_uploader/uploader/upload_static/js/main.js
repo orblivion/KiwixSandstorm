@@ -124,7 +124,7 @@ $(function () {
                 data.uploadedBytes = lastUploadedBytes
                 var timeoutSeconds = null
                 if (tries >= 1) {
-                    timeoutSeconds = 2 ** (11 - tries)
+                    timeoutSeconds = 2 ** ((MAX_TRIES + 1) - tries)
                     setTimeout(data.submit.bind(data), 1000 * timeoutSeconds)
                     tries = tries - 1
                 }
@@ -132,6 +132,8 @@ $(function () {
                 var errorText = getResponseError(data.response())
                 if (timeoutSeconds != null) {
                     errorText += ' (retrying after ' + timeoutSeconds + ' seconds...)'
+                } else {
+                    errorText += ' (will no longer retry)'
                 }
                 $('#upload-error-text').html(errorText)
                 $('#upload-error').show()
