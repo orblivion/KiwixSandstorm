@@ -2,7 +2,7 @@
 
 ## Who is this for?
 
-Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of Wikipedia, available on your local network even when you're disconnected from the Internet.
+Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of Wikipedia, Gutenberg, or TED Talks, available on your local network even when you're disconnected from the Internet.
 
 Now, with Kiwix, you can easily set up your own copy of Wikipedia, Wikiquote, Wikivoyage, or many other open content sources with the simplicity of Sandstorm.
 
