@@ -87,7 +87,7 @@ else
 fi
 
 # Build libzim - we need a version with pkg-config stuff
-LIBZIMFILE=/usr/local/lib/libzim.la
+LIBZIMFILE=/opt/app/libzim/ZIM_DONE
 if [ ! -f $LIBZIMFILE ]; then
     echo "Buliding and installing libzim"
 
@@ -97,12 +97,13 @@ if [ ! -f $LIBZIMFILE ]; then
     cd /opt/app/libzim
     # Tip of master at the time of writing.
     # TODO switch to tag (though still refer by hash) when this release stabilizes.
-    git checkout 33d3763dfd63ffd4139f7f71aa065e13a853920f
+    git checkout 6d5029d898c595c9f7f5de428128221d6ea15e65
     mkdir build
     $VENV3/bin/python3 $VENV3/bin/meson build
     cd build
     ninja
     ninja install
+    touch $LIBZIMFILE
     echo "Built and installed libzim"
 else
     echo "Already built libzim"
@@ -138,7 +139,7 @@ if [ ! -f $XAPIANCOREFILE ]; then
     rm -rf xapian
     git clone https://git.xapian.org/xapian xapian
     cd /opt/app/xapian/xapian-core
-    git checkout 3c341a7b671797c32da06fcb1f9ae77521a5819d # v1.4.3
+    git checkout 8035a3899195bce2671e07a4498687e723fe6e59 # v1.4.4
 
     echo "xapian libtoolize"
     libtoolize

@@ -36,7 +36,7 @@ if [ ! -f $KIWIXLIBFILE ]; then
     cd kiwix-lib
     # Tip of master at the time of writing.
     # TODO switch to tag (though still refer by hash) when this release stabilizes.
-    git checkout d360b9143c4911b56d9c69142109f1f6d867830d
+    git checkout 7132775d672ab4894759b4ba545c7fce774d0d09
     mkdir build
     $VENV3/bin/python3 $VENV3/bin/meson build
     cd build
@@ -59,7 +59,7 @@ if [ ! -f $KIWIXSERVEFILE ]; then
     cd kiwix-tools
     # Tip of master at the time of writing.
     # TODO switch to tag (though still refer by hash) when this release stabilizes.
-    git checkout c2d29376d9c63192cd94582806666f69422f19fa
+    git checkout e51539d1611a962a7fc38bb7437191507a769cb1
     mkdir build
     $VENV3/bin/python3 $VENV3/bin/meson build
     cd build

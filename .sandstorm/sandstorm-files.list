@@ -92,7 +92,7 @@ opt/app/pugixml/libpugixml.so.1
 opt/app/pugixml/libpugixml.so.1.8
 opt/app/scripts/kiwix_delayed.sh
 opt/app/xapian/xapian-core/.libs/libxapian.so.30
-opt/app/xapian/xapian-core/.libs/libxapian.so.30.3.0
+opt/app/xapian/xapian-core/.libs/libxapian.so.30.3.1
 opt/app/zim_uploader/env/lib/python2.7/UserDict.py
 opt/app/zim_uploader/env/lib/python2.7/UserDict.pyc
 opt/app/zim_uploader/env/lib/python2.7/_abcoll.py
