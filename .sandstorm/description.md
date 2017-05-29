@@ -10,11 +10,15 @@ Now, with Kiwix, you can easily set up your own copy of Wikipedia, Wikiquote, Wi
 
 <a href="http://wiki.kiwix.org/wiki/Features#Web_server" target="_blank" rel="noopener noreferrer">Kiwix</a> is a project of its own. This Sandstorm app makes it easier to set up, but it is still in Beta, so some features may be rough around the edges:
 
-* Searching by document content does not work for most wikis.
-* Search does not work at all for some wikis (It does work for full English Wikipedia).
-* The "Random Page" feature does not work.
-* Seeking within videos does not work.
-* External links must manually be opened in new tabs.
+* Searching wikis:
+  * Searching by document content (as opposed to document title) does not work for some wikis.
+  * Search does not work at all for some wikis.
+  * Major English wikis, such as Wikipedia, seem to be okay here.
+* Other features:
+  * Seeking within videos does not work.
+  * The "Random Page" feature on wikis does not work.
+* User interface:
+  * External links must manually be opened in new tabs
 
 If you are interested in seeing something in particular get improved, <em>please give feedback</em>!
 
