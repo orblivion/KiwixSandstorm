@@ -178,48 +178,63 @@ def _upload():
 
     return redirect(url_for('index'))
 
+ZIM_FILE_LANGUAGES = {
+  'en':  'English',
+  'eng': 'English',
+  'fr':  'French',
+  'pt':  'Portuguese',
+}
+ZIM_FILE_VARIANTS = {
+  None:          'Full Size',
+  'all':         'Full Size',
+  'all_nopic':   'No Images',
+  'business':    'Business',
+  'technology':  'Tech',
+  'ray_charles': 'Articles Related to Ray Charles',
+}
+ZIM_FILE_LINK_TEMPLATE = 'http://download.kiwix.org/zim/{content_code}_{lang_code}{variant_opt}.zim{torrent_ext_opt}'
 
-def gen_download_links():
-    # Perhaps expand these soon, but with a chooser interface.
-    languages = [('en', 'English')]
-
-    # (file_name_part, display_name, full_approx_size, nopic_size)
+def gen_popular_download_links():
     # Only advertise approximate size because the size can change
-    contents = [
-        ('wikipedia', 'Wikipedia', '55Gb', '15Gb'),
-        ('wikivoyage', 'WikiVoyage', '600Mb', '80Mb'),
-        ('wikisource', 'WikiSource', '8Gb', '2.5Gb'),
-        ('wiktionary', 'Wiktionary', '1.5Gb', '900Mb'),
-
-        # PhET doesn't work yet on Kiwix for Sandstorm
-        # ('phet', 'PhET', '12Mb', None),
+    return [
+        _download_link('wikipedia',         'Wikipedia',         'en',  [('all', '54Gb'),     ('all_nopic', '16Gb')]),
+        _download_link('wikivoyage',        'WikiVoyage',        'en',  [('all', '580Mb'),    ('all_nopic', '80Mb')]),
+        _download_link('wikisource',        'WikiSource',        'en',  [('all', '8.2Gb'),    ('all_nopic', '2.3Gb')]),
+        _download_link('wiktionary',        'Wiktionary',        'en',  [('all', '1.3Gb'),    ('all_nopic', '900Mb')]),
+        _download_link('ted',               'Ted Talks',         'en',  [('business', '9Gb'), ('technology', '19Gb')]),
+        _download_link('gutenberg',         'Project Gutenberg', 'en',  [('all', '40Gb')]),
+        _download_link('stackoverflow.com', 'Stack Overflow',    'eng', [('all', '52Gb')]),
     ]
 
-    for lang_code, lang_name in languages:
-        for content_code, content_name, full_approx_size, nopic_approx_size in contents:
-            if nopic_approx_size:
-                link_template = 'http://download.kiwix.org/zim/%s_%s_all%s.zim%s'
-            else:
-                link_template = 'http://download.kiwix.org/zim/%s_%s%s.zim%s'
+def gen_demo_download_links():
+    # Only advertise approximate size because the size can change
+    return [
+        _download_link('phet',                    'PhET',                                'en', [(None, '12Mb')]),
+        _download_link('beer.stackexchange.com',  'Stack Exchange: Beer', 'en', [('all', '55Mb')]),
+        _download_link('tedxlausannechange-2013', 'TEDxLausanneChange',                  'fr', [('all', '79Mb')]),
+        _download_link('gutenberg',               'Project Gutenberg',                   'pt', [('all', '170Mb')]),
+        _download_link('wikipedia',               'Wikipedia Subset',                    'en', [('ray_charles', '170Mb')]),
+    ]
 
-            yield {
-                'full': {
-                    'direct_link': link_template % (
-                        content_code, lang_code, '', ''),
-                    'torrent_link': link_template % (
-                        content_code, lang_code, '', '.torrent'),
-                    'approx_size': full_approx_size,
-                },
-                'nopic': {
-                    'direct_link': link_template % (
-                        content_code, lang_code, '_nopic', ''),
-                    'torrent_link': link_template % (
-                        content_code, lang_code, '_nopic', '.torrent'),
-                    'approx_size': nopic_approx_size,
-                } if nopic_approx_size else None,
-                'display_name': content_name,
-                'display_language': lang_name,
-            }
+def _download_link(content_code, content_name, lang_code, variants):
+    return {
+        'display_name': content_name,
+        'display_language': ZIM_FILE_LANGUAGES[lang_code],
+        'variants': [{
+            'direct_link': ZIM_FILE_LINK_TEMPLATE.format(
+                content_code=content_code,
+                lang_code=lang_code,
+                variant_opt='_%s' % variant if variant else '',
+                torrent_ext_opt=''),
+            'torrent_link': ZIM_FILE_LINK_TEMPLATE.format(
+                content_code=content_code,
+                lang_code=lang_code,
+                variant_opt='_%s' % variant if variant else '',
+                torrent_ext_opt='.torrent'),
+            'approx_size': approx_size,
+            'display_name': ZIM_FILE_VARIANTS[variant]
+        } for (variant, approx_size) in variants]
+    }
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -234,7 +249,8 @@ def index():
         zim_file_exists=os.path.exists(COMPLETED_FILE_PATH),
         read_only='uploader' not in request.headers['X-Sandstorm-Permissions'],
         page=page,
-        download_links=gen_download_links(),
+        popular_download_links=gen_popular_download_links(),
+        demo_download_links=gen_demo_download_links(),
     )
 
 application = app.wsgi_app

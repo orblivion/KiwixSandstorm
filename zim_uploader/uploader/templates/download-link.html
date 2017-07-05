@@ -1,0 +1,13 @@
+<ul class="col-lg-4 list-group">
+    <li class="list-group-item list-group-item-success">
+        <ul class="list-group">
+            <h4>{{ download_link.display_name }} ({{ download_link.display_language }})</h4>
+            {% for variant in download_link.variants %}
+                <br>
+                <p><strong>{{ variant.display_name }}</strong> (~{{ variant.approx_size }})</p>
+                <a href="{{ variant.direct_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Direct Download</a>
+                <a href="{{ variant.torrent_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Torrent</a>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
