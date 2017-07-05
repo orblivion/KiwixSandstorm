@@ -29,3 +29,7 @@ When you start up the app for the first time, it will guide you through the proc
 * Get a content file from the Internet
 * Upload it to your local Sandstorm server
 * Enjoy the content, and share it with others on your local network!
+
+## Licensing
+
+[See here](https://github.com/orblivion/KiwixSandstorm/blob/release/distribution_licenses.md) for license information on bundled dependencies.
