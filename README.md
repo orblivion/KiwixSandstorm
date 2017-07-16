@@ -36,8 +36,8 @@ Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to inc
 
 * `zim_uploader/uploader/upload_static/img/kiwix-logo.svg`: GPL 2 or later, from [here](https://commons.wikimedia.org/wiki/File:Kiwix_logo.svg)
 * Images found in `.sandstorm/kiwix-icons`: GPL 1.2 or later, originally from [here](https://upload.wikimedia.org/wikipedia/commons/1/14/Kiwix_icon.svg)
-* Otherwise [see here](https://github.com/orblivion/KiwixSandstorm/blob/master/COPYING) for licensing information about this app itself.
+* Otherwise [see here](COPYING) for licensing information about this app itself.
 
 ## Package distribution
 
-[See here](https://github.com/orblivion/KiwixSandstorm/blob/master/distribution_licenses.md) for licensing information about the distribution of this package, including bundled dependencies.
+[See here](distribution_licenses.md) for licensing information about the distribution of this package, including bundled dependencies.
