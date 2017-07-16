@@ -32,4 +32,4 @@ When you start up the app for the first time, it will guide you through the proc
 
 ## Licensing
 
-[See here](https://github.com/orblivion/KiwixSandstorm/blob/release/COPYING) for licensing information about this app itself. [See here](https://github.com/orblivion/KiwixSandstorm/blob/release/distribution_licenses.md) for licensing information about the app's distribution, including bundled dependencies.
+[See here](https://github.com/orblivion/KiwixSandstorm/blob/release/README.md#license) for details on licensing, both for this app itself and bundled dependencies.
