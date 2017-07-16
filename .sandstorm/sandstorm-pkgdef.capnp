@@ -27,8 +27,8 @@ const pkgdef :Spk.PackageDefinition = (
 
     actions = [
       # Define your "new document" handlers here.
-      ( title = (defaultText = "New open content mirror"),
-        nounPhrase = (defaultText = "open content mirror"),
+      ( title = (defaultText = "New free content mirror"),
+        nounPhrase = (defaultText = "free content mirror"),
         command = .myCommand
         # The command to run when starting for the first time. (".myCommand"
         # is just a constant defined at the bottom of the file.)
