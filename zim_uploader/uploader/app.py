@@ -197,11 +197,11 @@ ZIM_FILE_LINK_TEMPLATE = 'http://download.kiwix.org/zim/{content_code}_{lang_cod
 def gen_popular_download_links():
     # Only advertise approximate size because the size can change
     return [
-        _download_link('wikipedia',         'Wikipedia',         'en',  [('all', '54Gb'),     ('all_nopic', '16Gb')]),
-        _download_link('wikivoyage',        'WikiVoyage',        'en',  [('all', '580Mb'),    ('all_nopic', '80Mb')]),
-        _download_link('wikisource',        'WikiSource',        'en',  [('all', '8.2Gb'),    ('all_nopic', '2.3Gb')]),
-        _download_link('wiktionary',        'Wiktionary',        'en',  [('all', '1.3Gb'),    ('all_nopic', '900Mb')]),
-        _download_link('ted',               'Ted Talks',         'en',  [('business', '9Gb'), ('technology', '19Gb')]),
+        _download_link('wikipedia',         'Wikipedia',         'en',  [('all', '59Gb'),       ('all_nopic', '19Gb')]),
+        _download_link('wikivoyage',        'WikiVoyage',        'en',  [('all', '695Mb'),      ('all_nopic', '166Mb')]),
+        _download_link('wikisource',        'WikiSource',        'en',  [('all', '9Gb'),        ('all_nopic', '3Gb')]),
+        _download_link('wiktionary',        'Wiktionary',        'en',  [('all', '1.7Gb'),      ('all_nopic', '1.3Gb')]),
+        _download_link('ted',               'Ted Talks',         'en',  [('business', '9.4Gb'), ('technology', '19Gb')]),
         _download_link('gutenberg',         'Project Gutenberg', 'en',  [('all', '40Gb')]),
         _download_link('stackoverflow.com', 'Stack Overflow',    'eng', [('all', '52Gb')]),
     ]
@@ -209,11 +209,11 @@ def gen_popular_download_links():
 def gen_demo_download_links():
     # Only advertise approximate size because the size can change
     return [
-        _download_link('phet',                    'PhET',                                'en', [(None, '12Mb')]),
-        _download_link('beer.stackexchange.com',  'Stack Exchange: Beer', 'en', [('all', '55Mb')]),
-        _download_link('tedxlausannechange-2013', 'TEDxLausanneChange',                  'fr', [('all', '79Mb')]),
-        _download_link('gutenberg',               'Project Gutenberg',                   'pt', [('all', '170Mb')]),
-        _download_link('wikipedia',               'Wikipedia Subset',                    'en', [('ray_charles', '170Mb')]),
+        _download_link('phet',                         'PhET',                       'en', [(None, '25Mb')]),
+        _download_link('literature.stackexchange.com', 'Stack Exchange: Literature', 'en', [('all', '29Mb')]),
+        _download_link('tedxlausannechange-2013',      'TEDxLausanneChange',         'fr', [('all', '79Mb')]),
+        _download_link('gutenberg',                    'Project Gutenberg',          'pt', [('all', '170Mb')]),
+        _download_link('wikipedia',                    'Wikipedia Subset',           'en', [('ray_charles', '1.5Mb')]),
     ]
 
 def _download_link(content_code, content_name, lang_code, variants):
