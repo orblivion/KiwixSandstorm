@@ -58,7 +58,7 @@ const pkgdef :Spk.PackageDefinition = (
         marketBig = (png = (dpi1x = embed "kiwix-icons/market-big-300x300.png")),
       ),
 
-      website = "https://github.com/orblivion/KiwixSandstorm",
+      website = "http://kiwix.org/",
       # This should be the app's main website url.
 
       codeUrl = "https://github.com/orblivion/KiwixSandstorm",

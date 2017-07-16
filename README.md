@@ -29,3 +29,7 @@ The other question is, how can the browser route between the uploader and kiwix 
 ## Symlinked static files
 
 Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to include them in the source. Instead, they are loaded as dependencies during the build process, and symlinked into the static directory.
+
+# LICENSE
+
+[See here](https://github.com/orblivion/KiwixSandstorm/blob/master/COPYING) for licensing information about this app itself. [See here](https://github.com/orblivion/KiwixSandstorm/blob/master/distribution_licenses.md) for licensing information about the distribution, including bundled dependencies.

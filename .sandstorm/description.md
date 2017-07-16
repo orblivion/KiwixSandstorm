@@ -1,4 +1,4 @@
-# Wikipedia without the Internet. Just a few clicks to set up.
+# In a few clicks, host your own copy of Wikipedia (and more!)
 
 ## Who is this for?
 
@@ -32,4 +32,4 @@ When you start up the app for the first time, it will guide you through the proc
 
 ## Licensing
 
-[See here](https://github.com/orblivion/KiwixSandstorm/blob/release/distribution_licenses.md) for license information on bundled dependencies.
+[See here](https://github.com/orblivion/KiwixSandstorm/blob/release/COPYING) for licensing information about this app itself. [See here](https://github.com/orblivion/KiwixSandstorm/blob/release/distribution_licenses.md) for licensing information about the app's distribution, including bundled dependencies.
