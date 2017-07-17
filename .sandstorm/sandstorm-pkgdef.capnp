@@ -19,7 +19,7 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "Kiwix"),
 
-    appVersion = 8,  # Increment this for every release.
+    appVersion = 9,  # Increment this for every release.
 
     appMarketingVersion = (defaultText = "0.0.1"),
     # Human-readable representation of appVersion. Should match the way you
@@ -130,6 +130,11 @@ const pkgdef :Spk.PackageDefinition = (
 
         #(width = 746, height = 795, jpeg = embed "path/to/screenshot-1.jpeg"),
         #(width = 640, height = 480, png = embed "path/to/screenshot-2.png"),
+
+        (width = 1024, height = 696, png = embed "screenshots/wikipedia.png"),
+        (width = 1024, height = 696, png = embed "screenshots/ted.png"),
+        (width = 1024, height = 696, png = embed "screenshots/stackexchange.png"),
+        (width = 1024, height = 696, png = embed "screenshots/gutenberg.png"),
       ],
       #changeLog = (defaultText = embed "path/to/sandstorm-specific/changelog.md"),
       # Documents the history of changes in Github-flavored markdown format (with the same restrictions
