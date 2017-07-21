@@ -71,8 +71,8 @@ fi
 ZIM_UPLOADER=/opt/app/zim_uploader
 
 # Set up uploader
-FLASKFILEUPLOADERFILE=$ZIM_UPLOADER/env/lib/python2.7/site-packages/flask/app.py
-if [ ! -f $FLASKFILEUPLOADERFILE ]; then
+DEPENDENCIESFILE=$DEPENDENCIES/DEPENDENCIES_DONE
+if [ ! -f $DEPENDENCIESFILE ]; then
     cd $DEPENDENCIES
 
     echo "Getting jquery file uploader assets"
@@ -99,6 +99,7 @@ if [ ! -f $FLASKFILEUPLOADERFILE ]; then
     virtualenv env
     env/bin/pip install -r uploader/requirements.txt
 
+    touch $DEPENDENCIESFILE
     echo "Installed dependencies for uploader"
 else
     echo "Already installed dependencies for uploader"
