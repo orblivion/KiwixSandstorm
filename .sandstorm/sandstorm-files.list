@@ -74,7 +74,6 @@ lib64/ld-linux-x86-64.so.2
 opt/app/.sandstorm/launcher.sh
 opt/app/.sandstorm/service-config/mime.types
 opt/app/.sandstorm/service-config/nginx.conf
-opt/app/dependencies/JavaScript-Templates/js/tmpl.min.js
 opt/app/dependencies/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2
 opt/app/dependencies/bootstrap-sass/assets/javascripts/bootstrap.min.js
 opt/app/dependencies/bootstrap.min.css
@@ -264,7 +263,6 @@ opt/app/zim_uploader/uploader/upload_static/js/jquery.fileupload-validate.js
 opt/app/zim_uploader/uploader/upload_static/js/jquery.fileupload.js
 opt/app/zim_uploader/uploader/upload_static/js/jquery.iframe-transport.js
 opt/app/zim_uploader/uploader/upload_static/js/main.js
-opt/app/zim_uploader/uploader/upload_static/js/tmpl.min.js
 opt/app/zim_uploader/uploader/upload_static/js/vendor/jquery.ui.widget.js
 proc/cpuinfo
 sandstorm-http-bridge

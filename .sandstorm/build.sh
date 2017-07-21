@@ -82,11 +82,6 @@ if [ ! -f $FLASKFILEUPLOADERFILE ]; then
     git clone https://github.com/blueimp/jQuery-File-Upload
     git -C jQuery-File-Upload checkout 0b4af3c57b86b3c7147c4d7c75deb71a0133f0e3 # tag v9.18.0
 
-    echo "Getting JavaScript-Templates assets"
-    rm -rf JavaScript-Templates
-    git clone https://github.com/blueimp/JavaScript-Templates
-    git -C JavaScript-Templates checkout dc7631396cd541db5644aa2c651e342c68511aad # tag v3.8.0
-
     echo "Getting bootstrap repo for glyphicons-halflings-regular.* and bootstrap.min.js"
     git clone https://github.com/twbs/bootstrap-sass
     git -C bootstrap-sass checkout 5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47 # tag v3.3.7
