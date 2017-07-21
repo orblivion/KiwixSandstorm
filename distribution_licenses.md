@@ -34,8 +34,7 @@ The license for the codebase to generate the Kiwix Sandstorm app is given in a s
 
 * LibZim
   * https://github.com/openzim/libzim/
-  * [GPL 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
-  * TODO - As of now, incompatible with Kiwix. They are currently sorting this out.
+  * GPL 2 or later. (Choosing [GPL 3](https://www.gnu.org/licenses/gpl-3.0.en.html) to be compatible)
 
 * PugiXML
   * https://github.com/zeux/pugixml

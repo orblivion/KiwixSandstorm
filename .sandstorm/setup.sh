@@ -36,7 +36,7 @@ echo "Installing nginx"
 apt-get install -y nginx
 
 echo "Installing build tools"
-apt-get install -y git build-essential libtool autoconf pkg-config cmake libicu-dev libctpp2-dev
+apt-get install -y git build-essential libtool autoconf pkg-config cmake libicu-dev libctpp2-dev ctpp2-utils
 
 echo "Installing python stuff"
 apt-get install -y python-virtualenv python3 uwsgi uwsgi-plugin-python
@@ -97,7 +97,7 @@ if [ ! -f $LIBZIMFILE ]; then
     cd /opt/app/libzim
     # Tip of master at the time of writing.
     # TODO switch to tag (though still refer by hash) when this release stabilizes.
-    git checkout 6d5029d898c595c9f7f5de428128221d6ea15e65
+    git checkout 9bbed65f5b4d938de25728537c6d3a178b957a07
     mkdir build
     $VENV3/bin/python3 $VENV3/bin/meson build
     cd build
