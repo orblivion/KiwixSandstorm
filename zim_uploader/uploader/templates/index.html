@@ -206,6 +206,10 @@
                     <center><img src="{{ url_for('static', filename='img/loading.gif') }}"></center>
                 </div>
             </div>
+            <div class="row hidden" id="kiwix-oops">
+                <h2>Oops</h2>
+                <p>There was an error viewing the content file. Try reloading this page. If that doesn't work, try restarting this Sandstorm grain. If that still doesn't work, there may be something wrong with the file.</p>
+            </div>
             <div class="row hidden" id="kiwix-link">
                 <div class="col-lg-12">
                     <a class="btn btn-primary btn-lg" href="/kiwix/">Done! Check it out.</a>
@@ -220,6 +224,10 @@
             <div class="col-lg-12">
                 <center><img src="{{ url_for('static', filename='img/loading.gif') }}"></center>
             </div>
+        </div>
+        <div class="row hidden" id="kiwix-oops">
+            <h2>Oops</h2>
+            <p>There was an error viewing the content file. Try reloading this page. If that doesn't work, try restarting this Sandstorm grain. If that still doesn't work, there may be something wrong with the file.</p>
         </div>
         {# Signal to js to redirect as soon as Kiwix is ready #}
         <div id="kiwix-do-redirect"></div>

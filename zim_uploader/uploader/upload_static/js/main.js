@@ -38,20 +38,35 @@ $(function () {
         }
     });
 
+    const KIWIX_CHECK_INTERVAL = 100
+    const KIWIX_CHECK_TIMEOUT = 10000
+
     var kiwixCheck = function() {
-        $.ajax({method: 'GET', url: '/kiwix/'})
-          .fail(function() {
-            setTimeout(kiwixCheck, 100)
-          })
-          .done(function() {
-            if ($('#kiwix-do-redirect').length) {
-              window.location = '/kiwix/';
-            } else {
-              $('#kiwix-link').removeClass('hidden')
-              $('#kiwix-waiting').addClass('hidden')
-              $('#fileupload').addClass('hidden')
-            }
-          })
+        setTimeout(kiwixCheckTimeout, 1, KIWIX_CHECK_TIMEOUT)
+    }
+
+    var kiwixCheckTimeout = function(timeRemaining) {
+        timeRemaining -= KIWIX_CHECK_INTERVAL
+        if (timeRemaining > 0) {
+            $.ajax({method: 'GET', url: '/kiwix/'})
+            .fail(function() {
+                setTimeout(kiwixCheckTimeout, KIWIX_CHECK_INTERVAL, timeRemaining)
+            })
+            .done(function() {
+                if ($('#kiwix-do-redirect').length) {
+                    window.location = '/kiwix/';
+                } else {
+                    $('#kiwix-link').removeClass('hidden')
+                    $('#kiwix-waiting').addClass('hidden')
+                    $('#fileupload').addClass('hidden')
+                }
+            })
+        } else {
+            console.log($('#kiwix-waiting').length)
+            $('#kiwix-oops').removeClass('hidden')
+            $('#kiwix-waiting').addClass('hidden')
+            $('#fileupload').addClass('hidden')
+        }
     }
 
     function setProgress(soFar, total) {
@@ -103,7 +118,7 @@ $(function () {
             $('#upload-progress').hide()
             $('#upload-progress-values').hide()
             $('#upload-progress-placeholder').hide()
-            setTimeout(kiwixCheck, 1)
+            kiwixCheck()
         })
         .bind('fileuploadadd', function (e, data) {
             $('#upload-progress .cancel').off('click')
@@ -150,6 +165,6 @@ $(function () {
         })
 
     if ($('#kiwix-do-redirect').length) {
-      setTimeout(kiwixCheck, 1)
+      kiwixCheck()
     }
 });
