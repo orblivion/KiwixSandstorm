@@ -1,0 +1,52 @@
+<h2>Upload content file</h2>
+<div id="upload-error" style="display: none;">
+    <span class="label label-danger">Error</span> <span id="upload-error-text"></span>
+</div>
+<form id="fileupload" action="/" method="POST" enctype="multipart/form-data">
+    <table role="presentation" class="table"><tbody class="files">
+        <div id="upload-progress" class="row template-upload fade in" style="display: none;">
+            <div class="col-sm-9" id="upload-progress-placeholder">
+                <span class="label label-success">Progress:</span>
+                <span>Sending...</span>
+            </div>
+            <div class="col-sm-9" id="upload-progress-values">
+                <!-- A bootstrap progress bar used too much CPU. It'll be on for a long time for these large uploads, so it's not worth it. -->
+                <span class="label label-success">Progress:</span>
+                <span id="upload-progress-percentage"></span>%
+                (<span id="upload-progress-sofarmegs"></span> /
+                <span id="upload-progress-totalmegs"></span> MiB)
+            </div>
+            <div class="col-sm-3">
+                <button class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>Cancel</span>
+                </button>
+            </div>
+        </div>
+    </tbody></table>
+    <div class="row fileupload-buttonbar">
+        <div class="col-lg-12" id="upload-interface">
+            <div class="panel panel-default" style="margin-top:1em">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Note:</h3>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        <li>On some browsers you can drag and drop a file onto here.</li>
+                        <li>Make a new grain for each new content file you upload. Do not try to upload multiple content files onto the same grain.</li>
+                        <li>If you try to upload onto two grains on the same Sandstorm server at the same time, it may end up slower overall.</li>
+                    </ul>
+                </div>
+            </div>
+            <span class="btn btn-lg btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>Upload your content file (.zim)</span>
+                <input type="file" name="file">
+            </span>
+            <a href="?page=download" class="btn btn-lg btn-secondary">Oops, go back to content download</a>
+        </div>
+    </div>
+</form>
+<br>
+<br>
+<br>

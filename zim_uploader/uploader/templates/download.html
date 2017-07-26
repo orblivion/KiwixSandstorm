@@ -1,0 +1,57 @@
+<div class="col-lg-12">
+    <h2>Download content file</h2>
+    <p>The first step is to download a content file to your personal computer (not onto Sandstorm just yet). If you already have a content file ready, you can <a href="?page=upload">skip ahead</a>.</p>
+    <div class="panel panel-default" style="margin-top:1em">
+        <div class="panel-heading">
+            <h3 class="panel-title">Note:</h3>
+        </div>
+        <div class="panel-body">
+            <p>For Kiwix, content is stored in ".zim" files. Most files, including Wikipedia, are available on the Kiwix website. Each file can be downloaded normally or using BitTorrent. BitTorrent is often faster, and will also help save bandwidth for Kiwix.</p>
+            <p>If you choose a large file, be mindful of:</p>
+            <ul>
+                <li>Your Sandstorm quota, if you have one set</li>
+                <li>Your overall disk space, if you are running your own Sandstorm server</li>
+                <li>Upload time, if you and your Sandstorm instance aren't on the same local network</li>
+            </ul>
+        </div>
+    </div>
+    <h3>Demo Content</h3>
+    <p>If you're just curious to see how this app works, check out some of these content items with smaller file sizes. File sizes are estimates, as they may change over time. <em>If any of the links go dead, a bug report would be appreciated! In the mean time, see "All Content" below.</em></p>
+</div>
+{% for download_links_column in demo_download_links | slice(3) %}
+  {% for download_link in download_links_column %}
+    {% include 'download-link.html' %}
+  {% endfor %}
+{% endfor %}
+
+<div class="col-lg-12">
+    <h3>Popular Content:</h3>
+    <p>Here are some quick links to popular items. File sizes are estimates, as they may change over time. <em>If any of the links go dead, a bug report would be appreciated! In the mean time, see "All Content" below.</em></p>
+</div>
+{% for download_links_column in popular_download_links | slice(3) %}
+  {% for download_link in download_links_column %}
+    {% include 'download-link.html' %}
+  {% endfor %}
+{% endfor %}
+
+<div class="col-lg-12">
+    <h3>All Content:</h3>
+    <p>You can find much more content on Kiwix's website, including other Wikimedia projects, subsets of Wikipedia, more Stack Exchange sites, and other TED Talks. They are also available in many other languages.</p>
+    <p>Find the content item you want, and download the <strong>"Non-indexed"</strong> version.</p>
+    <ul class="col-lg-4 list-group">
+        <li class="list-group-item list-group-item-success">
+            <h4>Browse all Content</h4>
+            <ul class="list-group">
+                <a href="http://wiki.kiwix.org/wiki/Content" target="_blank" rel="noopener noreferrer" class="list-group-item list-group">English</a>
+                <a href="http://wiki.kiwix.org/wiki/Content_in_all_languages" target="_blank" rel="noopener noreferrer" class="list-group-item list-group">All languages</a>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div class="col-lg-12">
+    <a href="?page=upload" class="btn btn-lg btn-primary">Okay, I got my content file.</a>
+    <a href="?page=intro" class="btn btn-lg btn-secondary">Go back to intro</a>
+    <br>
+    <br>
+    <br>
+</div>
