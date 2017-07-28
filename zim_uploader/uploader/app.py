@@ -128,11 +128,11 @@ def _upload():
                 'total_size': content_range['total']
             }
 
-            if os.path.exists('/opt/app/force_fail'):
+            if os.path.exists('/var/force_fail') or os.path.exists('/opt/app/force_fail'):
                 result['error'] = 'Testing forced upload failure: ' + str(result)
                 return json.dumps({"files": [result]}), 400
 
-            if os.path.exists('/opt/app/random_fail'):
+            if os.path.exists('/var/random_fail') or os.path.exists('/opt/app/random_fail'):
                 random_failure = random.randint(0, 8)
                 if random_failure == 0: # error message in 'error' field
                     result['error'] = 'Testing random upload failure 0: ' + str(result)
