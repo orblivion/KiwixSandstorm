@@ -1,8 +1,22 @@
-This is a work in progress (ALPHA) package of [Kiwix](http://www.kiwix.org) for Sandstorm. Since `kiwix-serve` is currently difficult to build from source, and it is expected to be easier sort of soon, this is going ahead by just downloading binaries from Kiwix's website. This should not be considered to be complete until it builds everything from source, or grabs everything from Debian packages (which may also be a possibilitey at some point). Until then, this is an item in `TODO.md`, and it will not leave BETA, or maybe even ALPHA, until it's fixed.
+This is a packaging of [Kiwix](http://www.kiwix.org) (in particular, `kiwix-serve`), for [Sandstorm.io](https://sandstorm.io).
 
-Relatedly, I acknowledge that the build process is currently not secure. Firstly, it downloads the binary of Kiwix over http, because even if you put "https" it just redirects to an http mirror anyway. (I fear far more sites do this than we like to think). So I don't bother. I do check sha256sum, but it's based on a binary I downloaded myself from a couple different wifi hotspots to have a little assurance that it's the same file. But please, take care until I figure this out.
+See `TODO.md` file to get an idea of the current status of this packaging project, though it may lag behind actual progress.
 
-See `TODO.md` file to get an idea of the current status of this packaging project.
+# Changelog
+
+(No releases yet)
+
+# LICENSE
+
+## This app itself
+
+* `zim_uploader/uploader/upload_static/img/kiwix-logo.svg`: GPL 2 or later, from [here](https://commons.wikimedia.org/wiki/File:Kiwix_logo.svg)
+* Images found in `.sandstorm/kiwix-icons`: GPL 1.2 or later, originally from [here](https://upload.wikimedia.org/wikipedia/commons/1/14/Kiwix_icon.svg)
+* Otherwise [see here](COPYING) for licensing information about this app itself.
+
+## Package distribution
+
+[See here](distribution_licenses.md) for licensing information about the distribution of this package, including bundled dependencies.
 
 # Hacks
 
@@ -45,19 +59,3 @@ Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to inc
 ## Removing CPU-heavy progress bar
 
 Earlier versions had a upload progress bar (either Bootstrap or Jquery, not sure which) that made my laptop huff and puff a lot. So for now it just shows progress in the form of text.
-
-# LICENSE
-
-## This app itself
-
-* `zim_uploader/uploader/upload_static/img/kiwix-logo.svg`: GPL 2 or later, from [here](https://commons.wikimedia.org/wiki/File:Kiwix_logo.svg)
-* Images found in `.sandstorm/kiwix-icons`: GPL 1.2 or later, originally from [here](https://upload.wikimedia.org/wikipedia/commons/1/14/Kiwix_icon.svg)
-* Otherwise [see here](COPYING) for licensing information about this app itself.
-
-## Package distribution
-
-[See here](distribution_licenses.md) for licensing information about the distribution of this package, including bundled dependencies.
-
-## Changelog
-
-(No releases yet)
