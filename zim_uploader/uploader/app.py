@@ -172,6 +172,10 @@ def _upload():
             if 'error' in result:
                 if os.path.exists(chunking_file_path):
                     os.remove(chunking_file_path)
+                # If we don't return a error response code, Jquery File
+                # Uploader will ignore the 'error' field and continue to upload
+                # the chunks like nothing happened, even though we're not
+                # saving them.
                 return json.dumps({"files": [result]}), error_code or 400
             else:
                 return json.dumps({"files": [result]})

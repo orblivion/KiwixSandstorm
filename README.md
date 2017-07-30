@@ -8,15 +8,27 @@ See `TODO.md` file to get an idea of the current status of this packaging projec
 
 This project took a couple hacks to implement on Sandstorm. Here they are described as best as can be recalled.
 
-## File uploading
+## Bleeding edge version of Kiwix
+
+This Sandstorm app currently uses a rather bleeding-edge version of Kiwix. As it turns out, this version of Kiwix is a lot easier to legitimately build from source than previous versions. Hopefully soon, Kiwix will release a new stable version and this app can use that.
+
+## File uploading interface
 
 Firstly, though the Kiwix desktop and mobile programs have built in downloaders, the sever does not. So, a new web-based uploader interface needed to be made. I primarily use flask, bootstrap and jquery-file-uploader.
 
-## Chunking uploads
+### Chunking uploads
 
 The usual way to upload large files over HTTP would be to do chunked uploads with the Content-Range header. This app uses jquery-file-uploader to implement the client side of this.
 
 However, as of now Sandstorm doesn't allow the Content-Range header to pass through. So, this package uses a hackaround: the Content-Range header is copied to POST. Look for `contentRange` in main.js and app.py to find it.
+
+### Retry on failure
+
+A retry scheme for upload failures is implemented as part of this package (not part of jquery-file-uploader). If there is an error uploading a chunk, the client will try repeatedly, with a delay. The delay doubles in size for each each failed attempt. If a chunk succeeds, the delay time for the next retry is reset. After a set amount of failures on a single chunk, the client will give up.
+
+This is useful for various hiccups. It seems to even survive a temporary Sandstorm grain shutdown. Spontaneous grain shutdowns and restarts are rare, but common enough that it happens at least once during, say, an upload of Wikipedia. So, in fact, this feature seems to be necessary.
+
+There may be errors (such as running out of space) where we do not wish for the client to retry. In the future, we probably want a way to signal to the client to not bother retrying, and to just let the user try to start over (while still displaying the error message). For the time being, in such cases it will retry the maximum number of times, and (I believe) keep the last error message visible for the user.
 
 ## Polling via js for Kiwix to start
 
@@ -30,6 +42,10 @@ The other question is, how can the browser route between the uploader and kiwix 
 
 Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to include them in the source. Instead, they are loaded as dependencies during the build process, and symlinked into the static directory.
 
+## CPU-heavy progress bar
+
+Earlier versions had a upload progress bar (either Bootstrap or Jquery, not sure which) that made my laptop huff and puff a lot. So for now it just shows progress in the form of text.
+
 # LICENSE
 
 ## This app itself
@@ -41,3 +57,7 @@ Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to inc
 ## Package distribution
 
 [See here](distribution_licenses.md) for licensing information about the distribution of this package, including bundled dependencies.
+
+## Changelog
+
+(No releases yet)
