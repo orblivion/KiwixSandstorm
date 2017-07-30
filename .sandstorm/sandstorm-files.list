@@ -74,6 +74,7 @@ lib64/ld-linux-x86-64.so.2
 opt/app/.sandstorm/launcher.sh
 opt/app/.sandstorm/service-config/mime.types
 opt/app/.sandstorm/service-config/nginx.conf
+opt/app/dependencies/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff
 opt/app/dependencies/bootstrap-sass/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2
 opt/app/dependencies/bootstrap-sass/assets/javascripts/bootstrap.min.js
 opt/app/dependencies/bootstrap.min.css
@@ -266,6 +267,7 @@ opt/app/zim_uploader/uploader/templates/waiting.html
 opt/app/zim_uploader/uploader/upload_static/css/bootstrap.min.css
 opt/app/zim_uploader/uploader/upload_static/css/custom.css
 opt/app/zim_uploader/uploader/upload_static/css/jquery.fileupload.css
+opt/app/zim_uploader/uploader/upload_static/fonts/glyphicons-halflings-regular.woff
 opt/app/zim_uploader/uploader/upload_static/fonts/glyphicons-halflings-regular.woff2
 opt/app/zim_uploader/uploader/upload_static/img/kiwix-logo.svg
 opt/app/zim_uploader/uploader/upload_static/img/loading.gif
