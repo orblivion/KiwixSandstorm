@@ -42,7 +42,7 @@ The other question is, how can the browser route between the uploader and kiwix 
 
 Bootstrap, jquery, and jquery-file-upload are dependencies. I didn't want to include them in the source. Instead, they are loaded as dependencies during the build process, and symlinked into the static directory.
 
-## CPU-heavy progress bar
+## Removing CPU-heavy progress bar
 
 Earlier versions had a upload progress bar (either Bootstrap or Jquery, not sure which) that made my laptop huff and puff a lot. So for now it just shows progress in the form of text.
 
