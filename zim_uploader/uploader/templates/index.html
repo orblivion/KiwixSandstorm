@@ -23,13 +23,19 @@
 <body>
 <div class="container">
     <div class="row">
-        {% include 'logo_header.html' %}
+        {% include 'logo-header.html' %}
     </div>
     {% if read_only and not zim_file_exists %}
-        {% include 'read_only_no_content.html' %}
+        {% include 'read-only-no-content.html' %}
     {% elif not zim_file_exists %}
         <div id="slide-intro" class="{% if page != 'intro'%}hidden {% endif %}row">
             {% include 'intro.html' %}
+        </div>
+        <div id="slide-how-it-works" class="{% if page != 'how-it-works'%}hidden {% endif %}row">
+            {% include 'how-it-works.html' %}
+        </div>
+        <div id="slide-known-limitations" class="{% if page != 'known-limitations'%}hidden {% endif %}row">
+            {% include 'known-limitations.html' %}
         </div>
         <div id="slide-download" class="{% if page != 'download'%}hidden {% endif %}row">
             {% include 'download.html' %}
@@ -42,10 +48,10 @@
                 {% include 'waiting.html' %}
             </div>
             <div class="row hidden" id="kiwix-oops">
-                {% include 'error_starting_kiwix.html' %}
+                {% include 'error-starting-kiwix.html' %}
             </div>
             <div class="row hidden" id="kiwix-link">
-                {% include 'done_button.html' %}
+                {% include 'done-button.html' %}
             </div>
             <br>
             <br>
@@ -56,7 +62,7 @@
             {% include 'waiting.html' %}
         </div>
         <div class="row hidden" id="kiwix-oops">
-            {% include 'error_starting_kiwix.html' %}
+            {% include 'error-starting-kiwix.html' %}
         </div>
         {# Signal to js to redirect as soon as Kiwix is ready #}
         <div id="kiwix-do-redirect"></div>

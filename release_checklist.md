@@ -11,4 +11,4 @@
   * (Reference: https://docs.sandstorm.io/en/latest/developing/publishing-apps/)
 * After app is accepted:
   * Changelog (date, release number, git hash it was built from)
-  * Point "release" branch on github to the hash it was built from, so that relevant (legal) links point to it
+  * Point "release" branch on github to the hash it was built from, so that relevant links point to it

@@ -1,13 +1,29 @@
-<ul class="col-lg-4 list-group">
-    <li class="list-group-item list-group-item-success">
-        <ul class="list-group">
-            <h4>{{ download_link.display_name }} ({{ download_link.display_language }})</h4>
-            {% for variant in download_link.variants %}
-                <br>
-                <p><strong>{{ variant.display_name }}</strong> (~{{ variant.approx_size }})</p>
-                <a href="{{ variant.direct_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Direct Download</a>
-                <a href="{{ variant.torrent_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item">Torrent</a>
-            {% endfor %}
-        </ul>
-    </li>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#content-category-{{ category_code }}-list" href="#content-code-{{ category_code }}-{{ download_link.content_id }}">
+                {{ download_link.display_name }} ({{ download_link.display_language }})
+            </a>
+        </h4>
+    </div>
+    <div id="content-code-{{ category_code }}-{{ download_link.content_id }}" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="panel-group">
+                {% for variant in download_link.variants %}
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <strong>{{ variant.display_name }}</strong> - {{ variant.approx_size }} (Estimated size)
+                            </h4>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{{ variant.direct_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item"><strong>Direct Download</strong></a>
+                            <a href="{{ variant.torrent_link }}" target="_blank" rel="noopener noreferrer" class="list-group-item"><strong>Torrent</strong> (Faster, saves Kiwix's bandwidth, but requires a BitTorrent application)</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                <a href="?page=upload" class="btn btn-lg btn-primary">Alright, I got my content file!</a>
+            </div>
+        </div>
+    </div>
+</div>

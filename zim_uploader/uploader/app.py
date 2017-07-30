@@ -204,12 +204,13 @@ def gen_popular_download_links():
         _download_link('ted',               'Ted Talks',         'en',  [('business', '9.4Gb'), ('technology', '19Gb')]),
         _download_link('gutenberg',         'Project Gutenberg', 'en',  [('all', '40Gb')]),
         _download_link('stackoverflow.com', 'Stack Overflow',    'eng', [('all', '52Gb')]),
+        _download_link('phet',              'PhET',              'en',  [(None, '25Mb')]), # popular, but small enough for demo
     ]
 
 def gen_demo_download_links():
     # Only advertise approximate size because the size can change
     return [
-        _download_link('phet',                         'PhET',                       'en', [(None, '25Mb')]),
+        _download_link('phet',                         'PhET',                       'en', [(None, '25Mb')]), # popular, but small enough for demo
         _download_link('literature.stackexchange.com', 'Stack Exchange: Literature', 'en', [('all', '29Mb')]),
         _download_link('tedxlausannechange-2013',      'TEDxLausanneChange',         'fr', [('all', '79Mb')]),
         _download_link('gutenberg',                    'Project Gutenberg',          'pt', [('all', '170Mb')]),
@@ -217,6 +218,10 @@ def gen_demo_download_links():
     ]
 
 def _download_link(content_code, content_name, lang_code, variants):
+    assert '_' not in content_code, (
+      'we rely on replacing dots with underscores in content_code when'
+      'making content_id, so we assume there are no underscores in there'
+    )
     return {
         'display_name': content_name,
         'display_language': ZIM_FILE_LANGUAGES[lang_code],
@@ -232,8 +237,9 @@ def _download_link(content_code, content_name, lang_code, variants):
                 variant_opt='_%s' % variant if variant else '',
                 torrent_ext_opt='.torrent'),
             'approx_size': approx_size,
-            'display_name': ZIM_FILE_VARIANTS[variant]
-        } for (variant, approx_size) in variants]
+            'display_name': ZIM_FILE_VARIANTS[variant],
+        } for (variant, approx_size) in variants],
+        'content_id': content_code.replace('.', '_'),
     }
 
 
@@ -241,7 +247,7 @@ def _download_link(content_code, content_name, lang_code, variants):
 def index():
     # TODO split this into separate actual endpoints
     page = request.args.get('page')
-    if page not in {'intro', 'download', 'upload'}:
+    if page not in {'intro', 'download', 'upload', 'known-limitations', 'how-it-works'}:
         page = 'intro'
 
     return render_template(

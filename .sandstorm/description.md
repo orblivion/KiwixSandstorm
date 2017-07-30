@@ -1,34 +1,21 @@
-# In a few clicks, host your own copy of Wikipedia (and more!)
+[comment]: NOTE: This needs to maintain partial parity with intro.html and how-it-works.html
+# Wikipedia without the Internet. Just a few clicks to set up.
 
-## Who is this for?
+Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of *Wikipedia* available on your home or community server, even when you're disconnected from the Internet.
 
-Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of Wikipedia, Gutenberg, or TED Talks, available on your local network even when you're disconnected from the Internet.
-
-Now, with Kiwix, you can easily set up your own copy of Wikipedia, Wikiquote, Wikivoyage, or many other free content sources with the simplicity of Sandstorm.
+With Kiwix, you can easily set up your own copy of Wikipedia, Project Gutenberg, Stack Overflow, and many other free content sources. Perfect for your local network. Learn more about the Kiwix project <a href="http://kiwix.org" target="_blank" rel="noopener noreferrer">here</a>.
 
 ## Known Limitations
 
-<a href="http://wiki.kiwix.org/wiki/Features#Web_server" target="_blank" rel="noopener noreferrer">Kiwix</a> is a project of its own. This Sandstorm app makes it easier to set up, but it is still in Beta, so some features may be rough around the edges:
-
-* Searching wikis:
-  * Searching by document content (as opposed to document title) does not work for some wikis.
-  * Search does not work at all for some wikis.
-  * Major English wikis, such as Wikipedia, seem to be okay here.
-* Other features:
-  * Seeking within videos does not work.
-  * The "Random Page" feature on wikis does not work.
-* User interface:
-  * External links must manually be opened in new tabs
-
-If you are interested in seeing something in particular get improved, <em>please give feedback</em>!
+Note that this Sandstorm app is based on the <a href="http://kiwix.org" target="_blank" rel="noopener noreferrer">Kiwix</a> project, but is still in progress, so it may lag behind in some features. <a href="https://github.com/orblivion/KiwixSandstorm/blob/release/known_limitations.md">See here</a> to read about current known limitations.</p>
 
 ## How does it work?
 
 When you start up the app for the first time, it will guide you through the process:
 
-* Get a content file from the Internet
-* Upload it to your local Sandstorm server
-* Enjoy the content, and share it with others on your local network!
+* Download a content file from the from Kiwix website (or elsewhere if you wish) onto _your personal computer_.
+* Upload the content file from your personal computer into _your Sandstorm grain_
+* Enjoy the content, and share it with others!
 
 ## Licensing
 
