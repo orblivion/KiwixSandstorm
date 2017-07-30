@@ -2,7 +2,9 @@
 * If you upgraded Kiwix:
   * Try viewing the basic file formats. Try searching around in them.
 * If you worked on uploader interface in any way:
-  * Turn on random failure for a while on uploading Wikipedia to your home server. Make sure all failures are tried.
+  * Make sure upload success works.
+  * Make sure upload manual cancel/try again works.
+  * Turn on random failure for a while on uploading a very large file. Make sure all failures are tried.
 * Regardless of whether you changed the content file links, re-check the file sizes. And maybe re-try the links too.
   * For file sizes, look in "all content in all languages" list page, not kiwix.org/downloads. The latter seems to lag.
 * Check/update `distribution_licenses.md` if you've pulled in new dependencies, and/or `sandstorm-files.list` has changed at all.
