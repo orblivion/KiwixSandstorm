@@ -1,3 +1,4 @@
+* Build from scratch again for a clean slate.
 * If you upgraded Kiwix:
   * Try viewing the basic file formats. Try searching around in them.
 * If you worked on uploader interface in any way:
