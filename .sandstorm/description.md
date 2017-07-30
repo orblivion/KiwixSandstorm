@@ -1,4 +1,4 @@
-[comment]: NOTE: This needs to maintain partial parity with intro.html and how-it-works.html
+<!-- NOTE: This needs to maintain partial parity with intro.html and how-it-works.html -->
 # Wikipedia without the Internet. Just a few clicks to set up.
 
 Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of *Wikipedia* available on your home or community server, even when you're disconnected from the Internet.
