@@ -20,10 +20,6 @@ The license for the codebase to generate the Kiwix Sandstorm app is given in a s
   * https://github.com/blueimp/jQuery-File-Upload
   * [MIT](https://opensource.org/licenses/MIT)
 
-* JavaScrpt-Templates
-  * https://github.com/blueimp/JavaScript-Templates
-  * [MIT](https://opensource.org/licenses/MIT)
-
 * Bootstrap CSS
   * https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
   * [MIT](https://opensource.org/licenses/MIT)
