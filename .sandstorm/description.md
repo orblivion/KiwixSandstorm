@@ -14,7 +14,7 @@ Note that this Sandstorm app is based on the <a href="http://kiwix.org" target="
 When you start up the app for the first time, it will guide you through the process:
 
 * Download a content file from the from Kiwix website (or elsewhere if you wish) onto _your personal computer_.
-* Upload the content file from your personal computer into _your Sandstorm grain_
+* Upload the content file from your personal computer into _your Sandstorm grain_.
 * Enjoy the content, and share it with others!
 
 ## Licensing
