@@ -1,9 +1,3 @@
-# Before First Marketplace Release
-
-* Publish (Go through `release_checklist.md`)
-
-# After First Marketplace Release
-
 * Bugs when running Kiwix
   * Random button, and sometimes Search button, doesn't work in sandstorm Kiwix, but not normal Kiwix
   * Stack Overflow tag buttons in answers don't work in sandstorm Kiwix. Figure out if this works in normal Kiwix.
