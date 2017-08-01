@@ -16,5 +16,5 @@
   * (Reference: https://docs.sandstorm.io/en/latest/developing/publishing-apps/)
 * After app is accepted:
   * Make git tag
-  * Changelog (date, release number, git hash/tag it was built from, release details)
-  * Point "release" branch on github to the hash it was built from, so that relevant links point to it
+  * Changelog (date, release number, git tag it was built from, release details)
+  * Point "release" branch on github to the tag it was built from, so that relevant links point to it

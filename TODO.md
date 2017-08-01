@@ -7,6 +7,8 @@
     * Maybe works in non-Sandstorm Kiwix?
   * Full text search isn't working for Sandstorm Stackoverflow
 
+* "Random" link, until fixed/removed, could go to a page that explains that the feature isn't there.
+
 * Messaging / UI
 
     * Get HN feedback.
