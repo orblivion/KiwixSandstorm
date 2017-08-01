@@ -1,13 +1,14 @@
-<!-- NOTE: This needs to maintain partial parity with intro.html and how-it-works.html -->
+[comment] This needs to maintain partial parity with intro.html and how-it-works.html
+
 # Wikipedia without the Internet. Just a few clicks to set up.
 
 Are you setting up an IT system for your school with limited Internet access? Are you setting up an independent mesh networking community? Are you just a data hoarder? Then you probably would love to have your own copy of *Wikipedia* available on your home or community server, even when you're disconnected from the Internet.
 
-With Kiwix, you can easily set up your own copy of Wikipedia, Project Gutenberg, Stack Overflow, and many other free content sources. Perfect for your local network. Learn more about the Kiwix project <a href="http://kiwix.org" target="_blank" rel="noopener noreferrer">here</a>.
+With Kiwix, you can easily set up your own copy of Wikipedia, Project Gutenberg, Stack Overflow, and many other free content sources. Perfect for your local network. Learn more about the Kiwix project [here](http://kiwix.org).
 
 ## Known Limitations
 
-Note that this Sandstorm app is based on the <a href="http://kiwix.org" target="_blank" rel="noopener noreferrer">Kiwix</a> project, but is still in progress, so it may lag behind in some features. <a href="https://github.com/orblivion/KiwixSandstorm/blob/release/known_limitations.md">See here</a> to read about current known limitations.</p>
+Note that this Sandstorm app is based on the [Kiwix](http://kiwix.org) project, but is still in progress, so it may lag behind in some features. [See here](https://github.com/orblivion/KiwixSandstorm/blob/release/known_limitations.md") to read about current known limitations.
 
 ## How does it work?
 
