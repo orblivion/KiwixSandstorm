@@ -6,7 +6,7 @@ With Kiwix, you can easily set up your own copy of Wikipedia, Project Gutenberg,
 
 ## Unsupported Features
 
-Note that this Sandstorm app is based on the [Kiwix](http://kiwix.org) project, but is still in progress, so it may lag behind in some features. [See here](https://github.com/orblivion/KiwixSandstorm/blob/release/known_limitations.md") to read about current known limitations.
+Note that this Sandstorm app is based on the [Kiwix](http://kiwix.org) project, but is still in progress, so it may lag behind in some features. [See here](https://github.com/orblivion/KiwixSandstorm/blob/release/known_limitations.md) to read about current known limitations.
 
 ## How does it work?
 

@@ -4,11 +4,11 @@ See `TODO.md` file to get an idea of the current status of this packaging projec
 
 # Changelog
 
-## 0.0.2
+## 0.0.3
 
-* appVersion: 11
+* appVersion: 12
 * Date: 2017-07-31
-* Git tag: `app-version-11`
+* Git tag: `app-version-12`
 
 Initial release! It's still a bit rough; see `known_limitations.md`.
 
