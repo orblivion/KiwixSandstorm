@@ -6,7 +6,7 @@ Are you setting up an IT system for your school with limited Internet access? Ar
 
 With Kiwix, you can easily set up your own copy of Wikipedia, Project Gutenberg, Stack Overflow, and many other free content sources. Perfect for your local network. Learn more about the Kiwix project [here](http://kiwix.org).
 
-## Known Limitations
+## Unsupported Features
 
 Note that this Sandstorm app is based on the [Kiwix](http://kiwix.org) project, but is still in progress, so it may lag behind in some features. [See here](https://github.com/orblivion/KiwixSandstorm/blob/release/known_limitations.md") to read about current known limitations.
 
