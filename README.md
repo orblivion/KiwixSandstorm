@@ -4,14 +4,13 @@ See `TODO.md` file to get an idea of the current status of this packaging projec
 
 # Changelog
 
-## 0.0.1
+## 0.0.2
 
-* appVersion: 10
-* Date: 2017-07-30
-* Git hash: `70f5f2891e442d4be5cf239d2ed03e5af49aa802`
-* Git tag: `app-version-10`
+* appVersion: 11
+* Date: 2017-07-31
+* Git tag: `app-version-11`
 
-Initial release! It's still a bit rough; see `known_limitations.md`. (Pending approval by Sandstorm.io team)
+Initial release! It's still a bit rough; see `known_limitations.md`.
 
 # LICENSE
 
