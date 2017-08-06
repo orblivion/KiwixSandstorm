@@ -9,6 +9,8 @@
 
 * "Random" link, until fixed/removed, could go to a page that explains that the feature isn't there.
 
+* UX: Move the "long intro" (copy of most of description.md) in intro.html of the app into an external "more info" link, so the startup is less annoying. Most users already know what this is.
+
 * Messaging / UI
 
     * Get HN feedback.
