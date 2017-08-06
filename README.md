@@ -4,6 +4,14 @@ See `TODO.md` file to get an idea of the current status of this packaging projec
 
 # Changelog
 
+## 0.0.4
+
+* appVersion: 13
+* Date: 2017-08-05
+* Git tag: `app-version-13`
+
+Change Marketplace description and first couple screens of onboarding. Replace a marketplace screenshot.
+
 ## 0.0.3
 
 * appVersion: 12
