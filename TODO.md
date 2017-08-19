@@ -12,6 +12,7 @@
 * Bug: Can't upload via mobile
 
 * Messaging / UI
+    * UX: Has Sandstorm chrome in the way if you're logged in, which isn't the best for viewing content.
     * UX: Move the "long intro" (copy of most of description.md) in intro.html of the app into an external "more info" link, so the startup is less annoying. Most users already know what this is.
     * Reactive Design for Mobile
 
