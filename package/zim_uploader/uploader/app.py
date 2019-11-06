@@ -10,6 +10,10 @@ import traceback
 from flask import Flask, request, render_template, redirect, url_for
 from werkzeug import secure_filename, exceptions
 
+# Indicates that the upload should be aborted. If it's a 409 it's probably something
+# that trying again won't help, so we signal to the javascript side of things to not
+# retry. Perhaps later we could split the error code out from the recovery question.
+CONFLICT_DONT_RECOVER = 409
 
 parser = argparse.ArgumentParser(description='Serve Zim file uploader.')
 parser.add_argument('--upload-path', dest='upload_path',
@@ -40,24 +44,22 @@ def upload():
     try:
         return _upload()
     except Exception as e:
-        print traceback.format_exc()
+        print (traceback.format_exc())
         return json.dumps(
-            {"files": [{'error': 'Unexpected error uploading file: ' + e.message}]}
+            {"files": [{'error': 'Unexpected error uploading file: ' + str(e)}]}
         ), 500
 
 def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, chunking_file_size_before):
     try:
-        with open(
-            chunking_file_path,
-            'a' if os.path.exists(chunking_file_path) else 'w'
-        ) as uploaded_file:
+        mode = 'ab' if os.path.exists(chunking_file_path) else 'wb'
+        with open(chunking_file_path, mode) as uploaded_file:
             # save file to disk
             files.save(uploaded_file)
     except IOError as e:
         if e.errno == 28:
-            return {'error': 'Out of space on device. (Check your Sandstorm quota)'}, 409
+            return {'error': 'Out of space on device. (Check your Sandstorm quota)'}, CONFLICT_DONT_RECOVER
         else:
-            return {'error': 'File error: ' + e.message}, 409
+            return {'error': 'File error: ' + str(e)}, CONFLICT_DONT_RECOVER
 
 
     # get chunk size after saving
@@ -67,12 +69,12 @@ def _save_chunk(files, filename, mime_type, content_range, chunking_file_path, c
         os.rename(chunking_file_path, COMPLETED_FILE_PATH)
         if app.config['DEBUG']:
             # useful for debugging file uploading
-            print 'completed file md5', subprocess.check_output(
+            print ('completed file md5', subprocess.check_output(
                 ['md5sum', COMPLETED_FILE_PATH]
-            )
+            ))
         # Just in case of botched previous uploads
         for filename in glob(CHUNKING_FOLDER + '*'):
-            print "removing", filename
+            print ('removing', filename)
             subprocess.call(['rm', filename])
 
     return {'size': size}, None
@@ -86,7 +88,7 @@ def _get_content_range(request):
     if content_range_match:
         return {
             k: int(v)
-            for (k, v) in content_range_match.groupdict().iteritems()
+            for (k, v) in content_range_match.groupdict().items()
         }
     else:
         return {
@@ -128,11 +130,12 @@ def _upload():
                 'total_size': content_range['total']
             }
 
-            if os.path.exists('/var/force_fail') or os.path.exists('/opt/app/force_fail'):
+            if os.path.exists('/var/force_fail'):
+                number = open('/var/force_fail', 'r').read().strip() or 400
                 result['error'] = 'Testing forced upload failure: ' + str(result)
-                return json.dumps({"files": [result]}), 400
+                return json.dumps({"files": [result]}), int(number)
 
-            if os.path.exists('/var/random_fail') or os.path.exists('/opt/app/random_fail'):
+            if os.path.exists('/var/random_fail'):
                 random_failure = random.randint(0, 8)
                 if random_failure == 0: # error message in 'error' field
                     result['error'] = 'Testing random upload failure 0: ' + str(result)
@@ -146,7 +149,7 @@ def _upload():
 
             if os.path.exists(COMPLETED_FILE_PATH):
                 result['error'] = 'File already uploaded'
-                error_code = 409 # Conflict. Closest one I can think of
+                error_code = CONFLICT_DONT_RECOVER # Conflict is the closest one I can think of
             elif not allowed_file(files.filename):
                 result['error'] = 'File type not allowed'
             elif content_range['total'] > MAX_FILE_LENGTH:
@@ -154,10 +157,14 @@ def _upload():
                 # total that's too big.
                 result['error'] = 'File too big'
             elif content_range['from'] != chunking_file_size_before:
-                result['error'] = ''.join(
+                result['error'] = ''.join([
                     'Error in uploading process. (Chunks out of order: size:%i ',
                     'content_range:%s chunking_file_path: %s)',
-                ) % (chunking_file_size_before, content_range, chunking_file_path)
+                ]) % (
+                    chunking_file_size_before,
+                    content_range,
+                    chunking_file_path
+                )
             else:
                 _result_update, error_code = _save_chunk(
                     files,
@@ -191,6 +198,7 @@ ZIM_FILE_LANGUAGES = {
 ZIM_FILE_VARIANTS = {
   None:          'Full Size',
   'all':         'Full Size',
+  'all_maxi':    'Full Size',
   'all_nopic':   'No Images',
   'business':    'Business',
   'technology':  'Tech',
@@ -201,24 +209,23 @@ ZIM_FILE_LINK_TEMPLATE = 'http://download.kiwix.org/zim/{content_code}_{lang_cod
 def gen_popular_download_links():
     # Only advertise approximate size because the size can change
     return [
-        _download_link('wikipedia',         'Wikipedia',         'en',  [('all', '59Gb'),       ('all_nopic', '19Gb')]),
-        _download_link('wikivoyage',        'WikiVoyage',        'en',  [('all', '695Mb'),      ('all_nopic', '166Mb')]),
-        _download_link('wikisource',        'WikiSource',        'en',  [('all', '9Gb'),        ('all_nopic', '3Gb')]),
-        _download_link('wiktionary',        'Wiktionary',        'en',  [('all', '1.7Gb'),      ('all_nopic', '1.3Gb')]),
-        _download_link('ted',               'Ted Talks',         'en',  [('business', '9.4Gb'), ('technology', '19Gb')]),
-        _download_link('gutenberg',         'Project Gutenberg', 'en',  [('all', '40Gb')]),
-        _download_link('stackoverflow.com', 'Stack Overflow',    'eng', [('all', '52Gb')]),
-        _download_link('phet',              'PhET',              'en',  [(None, '25Mb')]), # popular, but small enough for demo
+        _download_link('wikipedia',         'Wikipedia',         'en',  [('all_maxi', '79GB'),  ('all_nopic',  '18GB')]),
+        _download_link('wikivoyage',        'WikiVoyage',        'en',  [('all_maxi', '789MB'), ('all_nopic',  '193MB')]),
+        _download_link('wikisource',        'WikiSource',        'en',  [('all_maxi', '15GB'),  ('all_nopic',  '7.2GB')]),
+        _download_link('wiktionary',        'Wiktionary',        'en',  [('all_maxi', '4.2GB'), ('all_nopic',  '1.4GB')]),
+        _download_link('ted',               'Ted Talks',         'en',  [('business', '8.3GB'), ('technology', '17GB')]),
+        _download_link('gutenberg',         'Project Gutenberg', 'en',  [('all', '54GB')]),
+        _download_link('stackoverflow.com', 'Stack Overflow',    'en',  [('all', '134GB')]),
+        _download_link('phet',              'PhET',              'en',  [(None,  '47MB')]), # popular, but small enough for demo
     ]
 
 def gen_demo_download_links():
     # Only advertise approximate size because the size can change
     return [
-        _download_link('phet',                         'PhET',                       'en', [(None, '25Mb')]), # popular, but small enough for demo
-        _download_link('literature.stackexchange.com', 'Stack Exchange: Literature', 'en', [('all', '29Mb')]),
-        _download_link('tedxlausannechange-2013',      'TEDxLausanneChange',         'fr', [('all', '79Mb')]),
-        _download_link('gutenberg',                    'Project Gutenberg',          'pt', [('all', '170Mb')]),
-        _download_link('wikipedia',                    'Wikipedia Subset',           'en', [('ray_charles', '1.5Mb')]),
+        _download_link('phet',                         'PhET',                       'en', [(None,          '47MB')]), # popular, but small enough for demo
+        _download_link('literature.stackexchange.com', 'Stack Exchange: Literature', 'en', [('all',         '89MB')]),
+        _download_link('gutenberg',                    'Project Gutenberg',          'pt', [('all',         '206MB')]),
+        _download_link('wikipedia',                    'Wikipedia Subset',           'en', [('ray_charles', '5MB')]),
     ]
 
 def _download_link(content_code, content_name, lang_code, variants):

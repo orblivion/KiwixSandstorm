@@ -23,12 +23,11 @@ cd /var
 # Start the Zim file uploader via uwsgi if there's no Zim file
 HOME=/var uwsgi \
       --socket $UWSGI_SOCKET_FILE \
-      --plugin python \
-      --virtualenv /opt/app/zim_uploader/env \
-      --python-path /opt/app/zim_uploader/uploader \
-      --wsgi-file /opt/app/zim_uploader/uploader/app.py &
+      --plugin python3 \
+      --python-path /zim_uploader/uploader \
+      --wsgi-file /zim_uploader/uploader/app.py &
 
-/opt/app/scripts/kiwix_delayed.sh &
+/kiwix-run/kiwix-delayed.sh &
 
 # Wait for uwsgi to bind its socket
 while [ ! -e $UWSGI_SOCKET_FILE ] ; do
@@ -36,5 +35,7 @@ while [ ! -e $UWSGI_SOCKET_FILE ] ; do
     sleep .2
 done
 
+sleep .2
+
 # Start nginx.
-/usr/sbin/nginx -c /opt/app/.sandstorm/service-config/nginx.conf -g "daemon off;"
+/usr/sbin/nginx -c /service-config/nginx.conf -g "daemon off;"

@@ -1,0 +1,5 @@
+
+
+# This file stores a list of sub-paths of package/ that should be ignored by git.
+dependencies
+kiwix-run/kiwix-serve

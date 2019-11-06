@@ -1,14 +1,3 @@
-* Bugs when running Kiwix
-  * Random button, and sometimes Search button, doesn't work in sandstorm Kiwix, but not normal Kiwix
-  * Stack Overflow tag buttons in answers don't work in sandstorm Kiwix. Figure out if this works in normal Kiwix.
-  * Gutenberg pdf links are broken
-  * Full text search isn't working for Sandstorm Wikipedia
-    * Works for Wikivoyage
-    * Maybe works in non-Sandstorm Kiwix?
-  * Full text search isn't working for Sandstorm Stackoverflow
-
-* "Random" link, until fixed/removed, could go to a page that explains that the feature isn't there.
-
 * Bug: Can't upload via mobile
 
 * Messaging / UI
@@ -75,9 +64,6 @@
 
 * Kiwix UI concerns
   * Is it going to be a pain to try to use in a tabbed fashion? "Open in new tab" will lose the Sandstorm frame, for instance.
-  * Kiwix UI Hacks
-    * Hide the Random button? (while it's broken)
-    * Hide the Library button? (since in this app it loops back to the same place as the Home button anyway)
 
 * Build improvements
   * Use make files instead of these bash scripts that search for the existence of targets
@@ -90,12 +76,6 @@
 * Once [this PR](https://github.com/sandstorm-io/sandstorm/pull/2887) is merged, switch to using Content Range headers instead of POST.
 
 * Validate zim file format?
-
-* Indexed files
-  * Find out when all the zim files are indexed for content search, then remove the "Get a non-indexed Zim file" instruction
-    * (The only reason we suggest non-indexed is that the indexed version are often split into multiple files, and packaged. We want to keep it simple for the user.)
-  * See about indexing it ourselves as a post-upload thing?
-  * [Probably not bother, given the above] Support pre-indexed versions that split data into multiple zim files
 
 * Blogging platforms on Sandstorm have a "public view". Can we do that here?
 

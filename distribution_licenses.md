@@ -2,11 +2,7 @@
 
 The license for the codebase to generate the Kiwix Sandstorm app is given in a separate file. However the binary distribution of the app that it generates also includes various bundled dependencies. This file serves to list (with some broad strokes) the licenses of the generated app's contents.
 
-## Installed via git, wget, or curl
-
-* Kiwix-Lib
-  * https://github.com/kiwix/kiwix-lib
-  * [GPL 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
+## Installed or downloaded via git, wget or curl
 
 * Kiwix-Tools
   * https://github.com/kiwix/kiwix-tools
@@ -28,38 +24,9 @@ The license for the codebase to generate the Kiwix Sandstorm app is given in a s
   * https://github.com/twbs/bootstrap-sass
   * [MIT](https://opensource.org/licenses/MIT)
 
-* LibZim
-  * https://github.com/openzim/libzim/
-  * GPL 2 or later. (Choosing [GPL 3](https://www.gnu.org/licenses/gpl-3.0.en.html) to be compatible)
-
-* PugiXML
-  * https://github.com/zeux/pugixml
-  * [MIT](https://opensource.org/licenses/MIT)
-
-* Xapian Core
-  * https://git.xapian.org/xapian
-  * GPL 2 or later. (Choosing [GPL 3](https://www.gnu.org/licenses/gpl-3.0.en.html) to be compatible)
-
 * Sandstorm
   * https://github.com/sandstorm-io/sandstorm/
-  * [See here](https://github.com/sandstorm-io/sandstorm/blob/master/LICENSE) for information about licensing.
-
-## Installed via Virtualenv
-
-Found in `zim_uploader/env`:
-
-* Virtualenv 1.11.6 (site.py)
-  * [MIT](https://opensource.org/licenses/MIT)
-* Flask==0.10
-  * [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)
-* itsdangerous==0.24
-  * [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)
-* Jinja2==2.9.6
-  * [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)
-* MarkupSafe==1.0
-  * [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)
-* Werkzeug==0.12.1
-  * [BSD 3-Clause](https://opensource.org/licenses/BSD-3-Clause)
+  * [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0) ([See here](https://github.com/sandstorm-io/sandstorm/blob/master/LICENSE) for details on licenses of its components.)
 
 ## Other
 
@@ -77,7 +44,7 @@ Found in `zim_uploader/env`:
 
 Some notes, perhaps to self, on how to find the list of things to list in this file.
 
-Go into `vagrant vm ssh`. Doublecheck in sources.list which repos of Debian's are used. (Hopefully only main)
+Doublecheck in sources.list of your building system for which repos of Debian's are used. (Hopefully only main)
 
 Grep for `git`, `wget`, `curl`. The results of these should be listable individually; they do not come with dependencies. But you don't need to include build tools, such as `ninja` (You can doublecheck in `sandstorm-files.list`).
 

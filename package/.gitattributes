@@ -1,0 +1,5 @@
+
+# Left over from vagrant-spk days. Don't know if I need it anymore but I won't bother messing with it.
+#
+# vagrant-spk creates shell scripts, which must end in \n, even on a \r\n system.
+*.sh text eol=lf

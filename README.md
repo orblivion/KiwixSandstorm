@@ -2,6 +2,26 @@ This is a packaging of [Kiwix](http://www.kiwix.org) (in particular, `kiwix-serv
 
 See `TODO.md` file to get an idea of the current status of this packaging project, though it may lag behind actual progress.
 
+# Building
+
+## Requirements and Recommendations
+
+Requires Debian Stretch. Newer versions won't work as-is. The packaging process references specific versions of library files.
+
+Recommended to do this in a dedicated environment such as a VM to avoid cross-contamination with your personal environment. This will install things with apt, and will package various files located in the system it's built in (read about `sandstorm-files.list` [here](https://docs.sandstorm.io/en/latest/developing/raw-packaging-guide/)).
+
+## Instructions
+
+This gets debian packages, so you may want to do `apt update`. Within the `packages/` directory, simply run this script (which will use sudo privileges and possibly ask for password) to install necessary things from the debian repo and download a few things:
+
+    ./build.sh
+
+Then from the same directory, run:
+
+    spk dev
+
+And then follow the [raw packaging guide](https://docs.sandstorm.io/en/latest/developing/raw-packaging-guide/) from there.
+
 # Changelog
 
 ## 0.0.4
@@ -25,7 +45,7 @@ Initial release! It's still a bit rough; see `known_limitations.md`.
 ## This app itself
 
 * `zim_uploader/uploader/upload_static/img/kiwix-logo.svg`: GPL 2 or later, from [here](https://commons.wikimedia.org/wiki/File:Kiwix_logo.svg)
-* Images found in `.sandstorm/kiwix-icons`: GPL 1.2 or later, originally from [here](https://upload.wikimedia.org/wikipedia/commons/1/14/Kiwix_icon.svg)
+* Images found in `package/kiwix-icons`: GPL 1.2 or later, originally from [here](https://upload.wikimedia.org/wikipedia/commons/1/14/Kiwix_icon.svg)
 * Otherwise [see here](COPYING) for licensing information about this app itself.
 
 ## Package distribution

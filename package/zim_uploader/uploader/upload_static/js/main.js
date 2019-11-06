@@ -138,7 +138,7 @@ $(function () {
             if(data.response().textStatus != 'abort') {
                 data.uploadedBytes = lastUploadedBytes
                 var timeoutSeconds = null
-                if (tries >= 1) {
+                if (tries >= 1 && data.response().jqXHR.status != 409) {
                     timeoutSeconds = 2 ** ((MAX_TRIES + 1) - tries)
                     setTimeout(data.submit.bind(data), 1000 * timeoutSeconds)
                     tries = tries - 1
