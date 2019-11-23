@@ -1,4 +1,3 @@
-<!-- NOTE: This needs to maintain partial parity with intro.html and how-it-works.html -->
 # All of Wikipedia (and much more!) on your home or community server, in a few clicks
 
 With Kiwix, you can set up _your own_ server to host a copy of many popular open data websites, in multiple languages, including:
