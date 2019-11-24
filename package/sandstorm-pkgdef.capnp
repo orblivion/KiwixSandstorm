@@ -19,7 +19,7 @@ const pkgdef :Spk.PackageDefinition = (
 
     appTitle = (defaultText = "Kiwix"),
 
-    appVersion = 14,  # Increment this for every release.
+    appVersion = 15,  # Increment this for every release.
 
     appMarketingVersion = (defaultText = "0.1.0"),
     # Human-readable representation of appVersion. Should match the way you
