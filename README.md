@@ -24,6 +24,17 @@ And then follow the [raw packaging guide](https://docs.sandstorm.io/en/latest/de
 
 # Changelog
 
+## 0.1.0
+
+* appVersion: 15
+* Date: 2019-12-29
+* Git tag: `app-version-15`
+* Switch from building with `vagrant-spk` to `spk`
+* Upgrade uploader to python3
+* Upgrade Kiwix-Serve to 3.0.1
+* Download kiwix-tools binaries from kiwix.org instead of building from source
+  * Based on some conversations I determined that building everything from source wasn't important enough for the effort. Perhaps again in the future.
+
 ## 0.0.4
 
 * appVersion: 13
@@ -56,13 +67,9 @@ Initial release! It's still a bit rough; see `known_limitations.md`.
 
 This project took a couple hacks to implement on Sandstorm. Here they are described as best as can be recalled.
 
-## Bleeding edge version of Kiwix
-
-This Sandstorm app currently uses a rather bleeding-edge version of Kiwix. As it turns out, this version of Kiwix is a lot easier to legitimately build from source than previous versions. Hopefully soon, Kiwix will release a new stable version and this app can use that.
-
 ## File uploading interface
 
-Firstly, though the Kiwix desktop and mobile programs have built in downloaders, the sever does not. So, a new web-based uploader interface needed to be made. I primarily use flask, bootstrap and jquery-file-uploader.
+Though the Kiwix desktop and mobile programs have built-in downloaders, the sever does not. So, a new web-based uploader interface needed to be made. I primarily use flask, bootstrap and jquery-file-uploader.
 
 ### Chunking uploads
 
@@ -72,11 +79,9 @@ However, as of now Sandstorm doesn't allow the Content-Range header to pass thro
 
 ### Retry on failure
 
-A retry scheme for upload failures is implemented as part of this package (not part of jquery-file-uploader). If there is an error uploading a chunk, the client will try repeatedly, with a delay. The delay doubles in size for each each failed attempt. If a chunk succeeds, the delay time for the next retry is reset. After a set amount of failures on a single chunk, the client will give up.
+A retry scheme for upload failures is implemented as part of this package (not part of jquery-file-uploader). If there is an error uploading a chunk, the client will try repeatedly (except for certain failures, such as running out of space), with a delay. The delay doubles in size for each each failed attempt. If a chunk succeeds, the delay time for the next retry is reset. After a set amount of failures on a single chunk, the client will give up.
 
 This is useful for various hiccups. It seems to even survive a temporary Sandstorm grain shutdown. Spontaneous grain shutdowns and restarts are rare, but common enough that it happens at least once during, say, an upload of Wikipedia. So, in fact, this feature seems to be necessary.
-
-There may be errors (such as running out of space) where we do not wish for the client to retry. In the future, we probably want a way to signal to the client to not bother retrying, and to just let the user try to start over (while still displaying the error message). For the time being, in such cases it will retry the maximum number of times, and (I believe) keep the last error message visible for the user.
 
 ## Polling via js for Kiwix to start
 

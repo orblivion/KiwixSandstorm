@@ -1,5 +1,13 @@
 * Bug: Can't upload via mobile
 
+* Try out integrating OPDS catalog
+  * https://github.com/orblivion/KiwixSandstorm/issues/2
+  * Basic level - use it to generate the downloading menu
+  * Advanced level - allow in-app downloads. I'm not sure Kiwix-Serve even implemented this yet. But then I'd also need to open up ports and stuff.
+
+* Trivial:
+    * marketplace fix - update the screenshots (other than stackoverflow, which is already updated). They still have the "library" link in the header.
+
 * Messaging / UI
     * UX: Has Sandstorm chrome in the way if you're logged in, which isn't the best for viewing content.
     * UX: Move the "long intro" (copy of most of description.md) in intro.html of the app into an external "more info" link, so the startup is less annoying. Most users already know what this is.

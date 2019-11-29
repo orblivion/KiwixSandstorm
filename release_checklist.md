@@ -22,12 +22,13 @@
   * For file sizes, look in "all content in all languages" list page, not kiwix.org/downloads. The latter seems to lag.
 * Check/update `distribution_licenses.md` if you've pulled in new dependencies, and/or `sandstorm-files.list` has changed at all.
 * Bump appVersion and appMarketingVersion
+* Build from scratch again for a clean slate.
 * `spk pack mypackage.spk` to build
 * `spk verify mypackage.spk` to confirm the details of metadata
   * (Reference: https://docs.sandstorm.io/en/latest/developing/publishing-apps/)
-* `vagrant-spk publish mypackage.spk` to publish
+* Make sure existing grains still work after an update.
+* `spk publish mypackage.spk` to publish
   * (Reference: https://docs.sandstorm.io/en/latest/developing/publishing-apps/)
-* Make sure existing grains still work after update.
 * After app is accepted:
   * Make git tag
   * Changelog (date, release number, git tag it was built from, release details)
