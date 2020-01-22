@@ -1,5 +1,9 @@
 * Bug: Can't upload via mobile
 
+* Security:
+  * GPG verify commits here
+  * GPG verify any other git repositories that I pull
+
 * Try out integrating OPDS catalog
   * https://github.com/orblivion/KiwixSandstorm/issues/2
   * Basic level - use it to generate the downloading menu
