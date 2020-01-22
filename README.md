@@ -8,7 +8,9 @@ See `TODO.md` file to get an idea of the current status of this packaging projec
 
 Requires Debian Stretch. Newer versions won't work as-is. The packaging process references specific versions of library files.
 
-Recommended to do this in a dedicated environment such as a VM to avoid cross-contamination with your personal environment. This will install things with apt, and will package various files located in the system it's built in (read about `sandstorm-files.list` [here](https://docs.sandstorm.io/en/latest/developing/raw-packaging-guide/)).
+**WARNING** - This will alter the target system (i.e. the one you run this on). In particular, this will install things on the target system from the Debian repositories (i.e. using `apt`) as well as other various sources (which you may or may not trust less than Debian). It is recommended to do this in a *dedicated environment*, such as a virtual machine, to avoid affecting your personal environment.
+
+It will create the Sandstorm package by including various files located in the target system (including the things installed as mentioned above).  (read about `sandstorm-files.list` [here](https://docs.sandstorm.io/en/latest/developing/raw-packaging-guide/)).
 
 ## Instructions
 
