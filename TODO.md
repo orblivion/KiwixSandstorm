@@ -4,10 +4,19 @@
   * GPG verify commits here
   * GPG verify any other git repositories that I pull
 
-* Try out integrating OPDS catalog
-  * https://github.com/orblivion/KiwixSandstorm/issues/2
-  * Basic level - use it to generate the downloading menu
-  * Advanced level - allow in-app downloads. I'm not sure Kiwix-Serve even implemented this yet. But then I'd also need to open up ports and stuff.
+* One of these two options:
+  * Multiple zims per grain: Use Powerbox to allow Kiwix to use its built-in downloader
+    * Axe the whole onboarding system
+    * Does Kiwix's built-in downloader do torrent? Can we do torrent on Sandstorm?
+    * What about existing grains with the old single zim file format? How would they get upgraded?
+      * Would the zim get automatically imported to new versions, given the Library file thing?
+    * Does it cover this issue? https://github.com/orblivion/KiwixSandstorm/issues/2
+  * One zim per grain: Use Powerbox to directly get files instead of current two-step downloading system
+    * Can we do torrent on Sandstorm?
+    * Axe vast swaths of the onboarding system
+    * Allows for one grain per Kiwix site
+    * Integrate OPDS catalog
+      * Covers this issue https://github.com/orblivion/KiwixSandstorm/issues/2
 
 * Trivial:
     * marketplace fix - update the screenshots (other than stackoverflow, which is already updated). They still have the "library" link in the header.
