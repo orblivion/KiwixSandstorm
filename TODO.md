@@ -20,6 +20,7 @@
 
 * Trivial:
     * marketplace fix - update the screenshots (other than stackoverflow, which is already updated). They still have the "library" link in the header.
+    * Split out CHANGELOG.md from README.md, attach it to capnp file
 
 * Messaging / UI
     * UX: Has Sandstorm chrome in the way if you're logged in, which isn't the best for viewing content.
