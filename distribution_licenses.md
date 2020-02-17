@@ -37,7 +37,7 @@ The license for the codebase to generate the Kiwix Sandstorm app is given in a s
     * Source: [https://commons.wikimedia.org/wiki/File:Kiwix_logo.svg](https://commons.wikimedia.org/wiki/File:Kiwix_logo.svg)
   * Otherwise [GPL 3](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
-* A (very small) subset of the "main" repository of the Debian 8 (Jessie) distribution.
+* A (very small) subset of the "main" repository of the Debian 9 (Stretch) distribution (possibly as built and distributed by QubesOS because of the maintainer's preferred build environment)
   * [See here](https://www.debian.org/legal/licenses/) for information about licensing.
 
 # Maintaining this list
