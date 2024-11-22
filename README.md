@@ -2,7 +2,7 @@
 
 I have [given up on upgrading it](https://github.com/orblivion/KiwixSandstorm/issues/6), and I think it may have stopped working for newer versions of the Kiwix file format.
 
-This repository is archived until Sandstorm becomes [Tempest](https://sandstorm.org/news/2023-10-23-sandstorm-tempest-and-the-future). I am hoping at that point that certain technical hurdles will be removed, and I can just implement direct server-side downloading.
+This repository is archived until Sandstorm becomes [Tempest](https://sandstorm.org/news/2023-10-23-sandstorm-tempest-and-the-future). I am hoping at that point that certain technical hurdles will be removed, and I can just implement direct server-side downloading of zim files.
 
 ---
 
